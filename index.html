@@ -280,7 +280,7 @@ h3{font-size:1.05rem;font-weight:700;margin-bottom:6px}
     <a class="sidebar-item" href="#colorwheel"><span class="sb-icon">🎡</span><span class="sb-label">Farbrad</span></a>
     <a class="sidebar-item" href="#quiz"><span class="sb-icon">❓</span><span class="sb-label">Stil-Quiz</span></a>
     <a class="sidebar-item" href="#shapes"><span class="sb-icon">🏺</span><span class="sb-label">Formenexplorer</span></a>
-    <a class="sidebar-item" href="#moodboard"><span class="sb-icon">🖼️</span><span class="sb-label">Moodboard</span></a>
+    <a class="sidebar-item" href="#moodboard"><span class="sb-icon">🖼️</span><span class="sb-label">Stimmungstafel</span></a>
   </div>
 
   <div class="sidebar-cat">
@@ -948,7 +948,7 @@ h3{font-size:1.05rem;font-weight:700;margin-bottom:6px}
         <div><label style="font-size:0.82rem;color:var(--dim);display:block;margin-bottom:4px">Anzahl der Arrangements</label>
           <input type="number" id="numArr" value="12" min="1" onchange="calcProfit()" style="width:100%;padding:10px 14px;border-radius:10px;border:1px solid var(--bdr);background:var(--card);color:var(--txt);font-family:inherit">
         </div>
-        <div><label style="font-size:0.82rem;color:var(--dim);display:block;margin-bottom:4px">Average Einkaufskosten (€)</label>
+        <div><label style="font-size:0.82rem;color:var(--dim);display:block;margin-bottom:4px">Durchschnittliche Einkaufskosten (€)</label>
           <input type="number" id="avgCost" value="45" min="1" onchange="calcProfit()" style="width:100%;padding:10px 14px;border-radius:10px;border:1px solid var(--bdr);background:var(--card);color:var(--txt);font-family:inherit">
         </div>
         <div><label style="font-size:0.82rem;color:var(--dim);display:block;margin-bottom:4px">Aufschlag: <span id="mkVal">3,5×</span></label>
@@ -1061,7 +1061,7 @@ h3{font-size:1.05rem;font-weight:700;margin-bottom:6px}
   <p class="sub" style="margin-bottom:32px">Beantworten Sie 5 Fragen und erhalten Sie eine personalisierte Straußempfehlung mit Fotos, Blumenliste und Preisen. Was Curates 500€/Monat-Beratungsprozess bietet — kostenlos.</p>
   <div class="card" id="quizArea">
     <div id="quizQ" style="text-align:center">
-      <div style="font-size:0.75rem;color:var(--dim);margin-bottom:8px">Question <span id="quizNum">1</span> of 5</div>
+      <div style="font-size:0.75rem;color:var(--dim);margin-bottom:8px">Frage <span id="quizNum">1</span> von 5</div>
       <h3 id="quizQuestion" style="margin-bottom:20px;font-size:1.2rem">Was ist der Anlass?</h3>
       <div id="quizOptions" style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center"></div>
     </div>
@@ -1357,7 +1357,7 @@ h3{font-size:1.05rem;font-weight:700;margin-bottom:6px}
 <!-- ============= PHOTO BANNER — BUSINESS TOOLS ============= -->
 <div class="photo-banner">
   <img src="https://images.unsplash.com/photo-1546905002-af9d9a15880a?w=1920&q=85" alt="Flower market" loading="lazy">
-  <div class="overlay-text"><h2>Complete Business Management Suite</h2></div>
+  <div class="overlay-text"><h2>Komplette Geschäftsverwaltungs-Suite</h2></div>
 </div>
 
 <!-- ================= CRM & CLIENT MANAGEMENT ================= -->
@@ -1433,7 +1433,7 @@ h3{font-size:1.05rem;font-weight:700;margin-bottom:6px}
         <span>Babyparty</span><span>8. April 2026</span><span style="color:var(--lavender);font-weight:600">1.800€</span><span style="color:var(--lavender);font-size:0.78rem;font-weight:600">Beratung</span>
       </div>
       <div class="cl-row" style="display:grid;grid-template-columns:2fr 2fr 1.5fr 1fr 1fr;gap:10px;padding:12px 14px;align-items:center">
-        <div><div style="font-weight:600;color:var(--txt)">Chen & Park Wedding</div><div style="font-size:0.75rem">lisa.chen@email.com</div></div>
+        <div><div style="font-weight:600;color:var(--txt)">Chen & Park Hochzeit</div><div style="font-size:0.75rem">lisa.chen@email.com</div></div>
         <span>Hochzeit</span><span>20. September 2026</span><span style="color:var(--rose);font-weight:600">12.000€</span><span style="color:var(--rose);font-size:0.78rem;font-weight:600">Neuer Lead</span>
       </div>
     </div>
@@ -1447,7 +1447,7 @@ h3{font-size:1.05rem;font-weight:700;margin-bottom:6px}
   <p class="sub" style="margin-bottom:32px">Alle Veranstaltungen, Fristen, Lieferungen und Beratungen auf einen Blick. Wofür True Client Pro 175€/Monat verlangt.</p>
   <div class="card">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
-      <h3 style="color:var(--sky)">March 2026</h3>
+      <h3 style="color:var(--sky)">März 2026</h3>
       <div style="display:flex;gap:8px">
         <button class="btn btn-outline btn-sm">← Zurück</button>
         <button class="btn btn-outline btn-sm">Weiter →</button>
@@ -1519,12 +1519,12 @@ h3{font-size:1.05rem;font-weight:700;margin-bottom:6px}
       </div>
       <div style="font-size:0.82rem;color:var(--dim);margin-bottom:12px">Farbpalette für diese Tafel:</div>
       <div style="display:flex;gap:8px;margin-bottom:16px">
-        <div style="width:40px;height:40px;border-radius:10px;background:#f4c2c2;cursor:pointer;border:2px solid rgba(255,255,255,0.2)" title="Blush"></div>
-        <div style="width:40px;height:40px;border-radius:10px;background:#722f37;cursor:pointer;border:2px solid rgba(255,255,255,0.2)" title="Burgundy"></div>
-        <div style="width:40px;height:40px;border-radius:10px;background:#faf0e6;cursor:pointer;border:2px solid rgba(255,255,255,0.2)" title="Cream"></div>
-        <div style="width:40px;height:40px;border-radius:10px;background:#4a7c59;cursor:pointer;border:2px solid rgba(255,255,255,0.2)" title="Forest Green"></div>
-        <div style="width:40px;height:40px;border-radius:10px;background:#b08d57;cursor:pointer;border:2px solid rgba(255,255,255,0.2)" title="Antique Gold"></div>
-        <div style="width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,#f4c2c2,#722f37,#faf0e6);cursor:pointer;border:2px solid var(--lavender)" title="Add Color">
+        <div style="width:40px;height:40px;border-radius:10px;background:#f4c2c2;cursor:pointer;border:2px solid rgba(255,255,255,0.2)" title="Zartrosa"></div>
+        <div style="width:40px;height:40px;border-radius:10px;background:#722f37;cursor:pointer;border:2px solid rgba(255,255,255,0.2)" title="Burgunder"></div>
+        <div style="width:40px;height:40px;border-radius:10px;background:#faf0e6;cursor:pointer;border:2px solid rgba(255,255,255,0.2)" title="Creme"></div>
+        <div style="width:40px;height:40px;border-radius:10px;background:#4a7c59;cursor:pointer;border:2px solid rgba(255,255,255,0.2)" title="Waldgrün"></div>
+        <div style="width:40px;height:40px;border-radius:10px;background:#b08d57;cursor:pointer;border:2px solid rgba(255,255,255,0.2)" title="Antikgold"></div>
+        <div style="width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,#f4c2c2,#722f37,#faf0e6);cursor:pointer;border:2px solid var(--lavender)" title="Farbe hinzufügen">
           <div style="display:flex;align-items:center;justify-content:center;height:100%;font-size:18px;color:#fff">+</div>
         </div>
       </div>
@@ -1541,7 +1541,7 @@ h3{font-size:1.05rem;font-weight:700;margin-bottom:6px}
           <div style="border-radius:14px;overflow:hidden;aspect-ratio:1"><img src="https://images.unsplash.com/photo-1577238063601-573282246970?w=400&q=80" alt="" style="width:100%;height:100%;object-fit:cover"></div>
         </div>
         <div style="margin-top:16px;text-align:center">
-          <div style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:700;color:#1a0a2e">Mitchell Wedding</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:700;color:#1a0a2e">Mitchell Hochzeit</div>
           <div style="font-size:0.8rem;color:#666;margin-top:4px">Romantischer Garten · Rosé & Burgunder</div>
           <div style="display:flex;justify-content:center;gap:6px;margin-top:10px">
             <div style="width:20px;height:20px;border-radius:50%;background:#f4c2c2"></div>
@@ -1569,10 +1569,10 @@ h3{font-size:1.05rem;font-weight:700;margin-bottom:6px}
           <span>Blume</span><span>Stiele</span><span>Bündel</span><span>Kosten</span>
         </div>
         <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:8px;padding:10px 12px;border-radius:8px;font-size:0.85rem;border-bottom:1px solid rgba(255,255,255,0.03)">
-          <span style="font-weight:600">Garden Rose (Blush)</span><span>45</span><span style="color:var(--sage)">9 × 5</span><span style="font-weight:600">202,50€</span>
+          <span style="font-weight:600">Gartenrose (Zartrosa)</span><span>45</span><span style="color:var(--sage)">9 × 5</span><span style="font-weight:600">202,50€</span>
         </div>
         <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:8px;padding:10px 12px;border-radius:8px;font-size:0.85rem;border-bottom:1px solid rgba(255,255,255,0.03)">
-          <span style="font-weight:600">Peony (White)</span><span>28</span><span style="color:var(--sage)">6 × 5</span><span style="font-weight:600">168,00€</span>
+          <span style="font-weight:600">Pfingstrose (Weiß)</span><span>28</span><span style="color:var(--sage)">6 × 5</span><span style="font-weight:600">168,00€</span>
         </div>
         <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:8px;padding:10px 12px;border-radius:8px;font-size:0.85rem;border-bottom:1px solid rgba(255,255,255,0.03)">
           <span style="font-weight:600">Eukalyptus (Silber)</span><span>60</span><span style="color:var(--sage)">12 × 5</span><span style="font-weight:600">120,00€</span>
@@ -1581,10 +1581,10 @@ h3{font-size:1.05rem;font-weight:700;margin-bottom:6px}
           <span style="font-weight:600">Ranunkel (Zartrosa)</span><span>35</span><span style="color:var(--sage)">7 × 5</span><span style="font-weight:600">105,00€</span>
         </div>
         <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:8px;padding:10px 12px;border-radius:8px;font-size:0.85rem;border-bottom:1px solid rgba(255,255,255,0.03)">
-          <span style="font-weight:600">Dahlia (Cafe au Lait)</span><span>20</span><span style="color:var(--sage)">4 × 5</span><span style="font-weight:600">110,00€</span>
+          <span style="font-weight:600">Dahlie (Cafe au Lait)</span><span>20</span><span style="color:var(--sage)">4 × 5</span><span style="font-weight:600">110,00€</span>
         </div>
         <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:8px;padding:10px 12px;border-radius:8px;font-size:0.85rem">
-          <span style="font-weight:600">Sweet Pea (White)</span><span>40</span><span style="color:var(--sage)">4 bch</span><span style="font-weight:600">48,00€</span>
+          <span style="font-weight:600">Wicke (Weiß)</span><span>40</span><span style="color:var(--sage)">4 bch</span><span style="font-weight:600">48,00€</span>
         </div>
       </div>
       <div class="calc-total" style="margin-top:16px">
@@ -1657,7 +1657,7 @@ h3{font-size:1.05rem;font-weight:700;margin-bottom:6px}
       <h3 style="color:var(--sage);margin-bottom:16px">Aktuelle Verträge</h3>
       <div style="display:flex;flex-direction:column;gap:10px">
         <div style="padding:14px;border-radius:12px;background:rgba(168,213,186,0.06);border:1px solid rgba(168,213,186,0.12);display:flex;justify-content:space-between;align-items:center">
-          <div><div style="font-weight:700;font-size:0.9rem">Mitchell Wedding</div><div style="font-size:0.75rem;color:var(--dim)">Unterzeichnet 14. Feb. 2026 · 8.500€</div></div>
+          <div><div style="font-weight:700;font-size:0.9rem">Mitchell Hochzeit</div><div style="font-size:0.75rem;color:var(--dim)">Unterzeichnet 14. Feb. 2026 · 8.500€</div></div>
           <span style="padding:4px 10px;border-radius:100px;font-size:0.7rem;font-weight:700;background:rgba(168,213,186,0.15);color:var(--sage)">UNTERZEICHNET ✓</span>
         </div>
         <div style="padding:14px;border-radius:12px;background:rgba(255,209,102,0.06);border:1px solid rgba(255,209,102,0.12);display:flex;justify-content:space-between;align-items:center">
@@ -1723,7 +1723,7 @@ h3{font-size:1.05rem;font-weight:700;margin-bottom:6px}
       <h3 style="color:var(--peach);margin-bottom:16px">Kunden-Angebotsvorschau</h3>
       <div class="proposal-preview">
         <div style="text-align:center;margin-bottom:20px">
-          <div style="font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:700;color:#1a0a2e">Mitchell Wedding</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:700;color:#1a0a2e">Mitchell Hochzeit</div>
           <div style="color:#888;font-size:0.9rem">Floraldesign-Angebot · 15. Juni 2026</div>
           <div style="display:flex;justify-content:center;gap:6px;margin-top:12px">
             <div style="width:24px;height:24px;border-radius:50%;background:#f4c2c2"></div>
@@ -1774,7 +1774,7 @@ h3{font-size:1.05rem;font-weight:700;margin-bottom:6px}
     </div>
     <div class="card care-card">
       <div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:12px">
-        <h3 style="color:var(--lavender)">Peony</h3>
+        <h3 style="color:var(--lavender)">Pfingstrose</h3>
         <span style="padding:3px 10px;border-radius:100px;font-size:0.7rem;font-weight:700;background:rgba(255,209,102,0.15);color:var(--gold)">5-7 Tage</span>
       </div>
       <div style="font-size:0.82rem;color:var(--dim);line-height:1.7">
@@ -1787,7 +1787,7 @@ h3{font-size:1.05rem;font-weight:700;margin-bottom:6px}
     </div>
     <div class="card care-card">
       <div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:12px">
-        <h3 style="color:var(--gold)">Dahlia</h3>
+        <h3 style="color:var(--gold)">Dahlie</h3>
         <span style="padding:3px 10px;border-radius:100px;font-size:0.7rem;font-weight:700;background:rgba(255,107,138,0.15);color:var(--rose)">3-5 Tage</span>
       </div>
       <div style="font-size:0.82rem;color:var(--dim);line-height:1.7">
@@ -1813,7 +1813,7 @@ h3{font-size:1.05rem;font-weight:700;margin-bottom:6px}
     </div>
     <div class="card care-card">
       <div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:12px">
-        <h3 style="color:var(--peach)">Tulip</h3>
+        <h3 style="color:var(--peach)">Tulpe</h3>
         <span style="padding:3px 10px;border-radius:100px;font-size:0.7rem;font-weight:700;background:rgba(168,213,186,0.15);color:var(--sage)">5-7 Tage</span>
       </div>
       <div style="font-size:0.82rem;color:var(--dim);line-height:1.7">
@@ -1872,16 +1872,16 @@ h3{font-size:1.05rem;font-weight:700;margin-bottom:6px}
       <div style="display:flex;align-items:end;gap:6px;height:140px;padding-bottom:4px">
         <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px"><div style="width:100%;background:linear-gradient(180deg,var(--sage),rgba(168,213,186,0.3));border-radius:4px 4px 0 0;height:30px"></div><span style="font-size:0.6rem;color:var(--dimmer)">Jan</span></div>
         <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px"><div style="width:100%;background:linear-gradient(180deg,var(--sage),rgba(168,213,186,0.3));border-radius:4px 4px 0 0;height:45px"></div><span style="font-size:0.6rem;color:var(--dimmer)">Feb</span></div>
-        <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px"><div style="width:100%;background:linear-gradient(180deg,var(--sage),rgba(168,213,186,0.3));border-radius:4px 4px 0 0;height:70px"></div><span style="font-size:0.6rem;color:var(--dimmer)">Mar</span></div>
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px"><div style="width:100%;background:linear-gradient(180deg,var(--sage),rgba(168,213,186,0.3));border-radius:4px 4px 0 0;height:70px"></div><span style="font-size:0.6rem;color:var(--dimmer)">Mär</span></div>
         <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px"><div style="width:100%;background:linear-gradient(180deg,var(--sage),rgba(168,213,186,0.3));border-radius:4px 4px 0 0;height:95px"></div><span style="font-size:0.6rem;color:var(--dimmer)">Apr</span></div>
-        <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px"><div style="width:100%;background:linear-gradient(180deg,var(--gold),rgba(255,209,102,0.3));border-radius:4px 4px 0 0;height:130px"></div><span style="font-size:0.6rem;color:var(--dimmer)">May</span></div>
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px"><div style="width:100%;background:linear-gradient(180deg,var(--gold),rgba(255,209,102,0.3));border-radius:4px 4px 0 0;height:130px"></div><span style="font-size:0.6rem;color:var(--dimmer)">Mai</span></div>
         <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px"><div style="width:100%;background:linear-gradient(180deg,var(--gold),rgba(255,209,102,0.3));border-radius:4px 4px 0 0;height:140px"></div><span style="font-size:0.6rem;color:var(--dimmer)">Jun</span></div>
         <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px"><div style="width:100%;background:linear-gradient(180deg,var(--sage),rgba(168,213,186,0.3));border-radius:4px 4px 0 0;height:100px"></div><span style="font-size:0.6rem;color:var(--dimmer)">Jul</span></div>
         <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px"><div style="width:100%;background:linear-gradient(180deg,var(--sage),rgba(168,213,186,0.3));border-radius:4px 4px 0 0;height:85px"></div><span style="font-size:0.6rem;color:var(--dimmer)">Aug</span></div>
         <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px"><div style="width:100%;background:linear-gradient(180deg,var(--rose),rgba(255,107,138,0.3));border-radius:4px 4px 0 0;height:120px"></div><span style="font-size:0.6rem;color:var(--dimmer)">Sep</span></div>
-        <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px"><div style="width:100%;background:linear-gradient(180deg,var(--rose),rgba(255,107,138,0.3));border-radius:4px 4px 0 0;height:115px"></div><span style="font-size:0.6rem;color:var(--dimmer)">Oct</span></div>
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px"><div style="width:100%;background:linear-gradient(180deg,var(--rose),rgba(255,107,138,0.3));border-radius:4px 4px 0 0;height:115px"></div><span style="font-size:0.6rem;color:var(--dimmer)">Okt</span></div>
         <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px"><div style="width:100%;background:linear-gradient(180deg,var(--sage),rgba(168,213,186,0.3));border-radius:4px 4px 0 0;height:55px"></div><span style="font-size:0.6rem;color:var(--dimmer)">Nov</span></div>
-        <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px"><div style="width:100%;background:linear-gradient(180deg,var(--sage),rgba(168,213,186,0.3));border-radius:4px 4px 0 0;height:40px"></div><span style="font-size:0.6rem;color:var(--dimmer)">Dec</span></div>
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px"><div style="width:100%;background:linear-gradient(180deg,var(--sage),rgba(168,213,186,0.3));border-radius:4px 4px 0 0;height:40px"></div><span style="font-size:0.6rem;color:var(--dimmer)">Dez</span></div>
       </div>
     </div>
     <div class="card">
@@ -1979,7 +1979,7 @@ h3{font-size:1.05rem;font-weight:700;margin-bottom:6px}
         <tr><td>CRM & Pipeline</td><td>✓</td><td>Basis</td><td>✓</td><td class="free-col">✓ 5 Stufen</td></tr>
         <tr><td>Angebote</td><td>✓</td><td>✓</td><td>✓</td><td class="free-col">✓ Vollständig</td></tr>
         <tr><td>Verträge & E-Signatur</td><td>✓</td><td>—</td><td>✓</td><td class="free-col">✓ Vorlagen</td></tr>
-        <tr><td>Moodboards</td><td>✓</td><td>✓</td><td>—</td><td class="free-col">✓ Ersteller</td></tr>
+        <tr><td>Stimmungstafeln</td><td>✓</td><td>✓</td><td>—</td><td class="free-col">✓ Ersteller</td></tr>
         <tr><td>Einkaufslisten</td><td>✓</td><td>✓</td><td>—</td><td class="free-col">✓ Zusammengefasst</td></tr>
         <tr><td>Veranstaltungskalender</td><td>✓</td><td>✓</td><td>✓</td><td class="free-col">✓ Vollständig</td></tr>
         <tr><td>Analyse-Dashboard</td><td>✓</td><td>✓</td><td>✓</td><td class="free-col">✓ Vollständig</td></tr>
@@ -2100,10 +2100,10 @@ function calcProfit(){
 
 // === SEASONS ===
 const SD={
-  spring:`<div class="g3"><div class="card"><h3 style="color:var(--rose)">Pfingstrosen</h3><p style="font-size:0.85rem;color:var(--dim)">April–June only. 6€-9€/Stiel. Früh buchen.</p></div><div class="card"><h3 style="color:var(--lavender)">Ranunkel</h3><p style="font-size:0.85rem;color:var(--dim)">March–May. 3€-5€/Stiel. Geschichtete Perfektion.</p></div><div class="card"><h3 style="color:var(--peach)">Tulpen</h3><p style="font-size:0.85rem;color:var(--dim)">Feb–May. 2,50€-4€/Stiel. Französische & Papageien-Tulpen.</p></div><div class="card"><h3 style="color:var(--sage)">Wicken</h3><p style="font-size:0.85rem;color:var(--dim)">April–June. 6€/Bund. Himmlischer Duft.</p></div><div class="card"><h3 style="color:var(--sky)">Anemonen</h3><p style="font-size:0.85rem;color:var(--dim)">Jan–April. 4,50€/Stiel. Dramatische Zentren.</p></div><div class="card"><h3 style="color:var(--gold)">Kirschblüte</h3><p style="font-size:0.85rem;color:var(--dim)">March–April. 12€/Zweig. Ätherisch.</p></div></div>`,
-  summer:`<div class="g3"><div class="card"><h3 style="color:var(--rose)">Dahlien</h3><p style="font-size:0.85rem;color:var(--dim)">July–October. 4€-6€/Stiel. Café au Lait ist der Star.</p></div><div class="card"><h3 style="color:var(--gold)">Sonnenblumen</h3><p style="font-size:0.85rem;color:var(--dim)">June–Sept. 2€/Stiel. Pure Fröhlichkeit.</p></div><div class="card"><h3 style="color:var(--sky)">Hortensien</h3><p style="font-size:0.85rem;color:var(--dim)">June–Oct. 5€/Stiel. Maximales Volumen.</p></div><div class="card"><h3 style="color:var(--lavender)">Lavendel</h3><p style="font-size:0.85rem;color:var(--dim)">June–Aug. 2,50€/Stiel. Duftiges Violett.</p></div><div class="card"><h3 style="color:var(--peach)">Gartenrosen</h3><p style="font-size:0.85rem;color:var(--dim)">May–Oct. 4,50€/Stiel. Hochsaison.</p></div><div class="card"><h3 style="color:var(--sage)">Lisianthus</h3><p style="font-size:0.85rem;color:var(--dim)">June–Sept. 4€/Stiel. Rosen-Doppelgänger.</p></div></div>`,
-  fall:`<div class="g3"><div class="card"><h3 style="color:var(--rose)">Dahlien</h3><p style="font-size:0.85rem;color:var(--dim)">Peak season. 4€-6€/Stiel. Reiche Juwelenfarben.</p></div><div class="card"><h3 style="color:var(--gold)">Chrysanthemen</h3><p style="font-size:0.85rem;color:var(--dim)">Sept–Nov. 2€/Stiel. Riesige Pompom-Chrysanthemen.</p></div><div class="card"><h3 style="color:var(--peach)">Ringelblumen</h3><p style="font-size:0.85rem;color:var(--dim)">Sept–Nov. 1,50€/Stiel. Warmes Orange und Gold.</p></div><div class="card"><h3 style="color:var(--sage)">Limelight-Hortensie</h3><p style="font-size:0.85rem;color:var(--dim)">Aug–Oct. 6€/Stiel. Wird im Herbst rosa.</p></div><div class="card"><h3 style="color:var(--mauve)">Protea</h3><p style="font-size:0.85rem;color:var(--dim)">Year-round. 10€/Stiel. Architektonisches Statement.</p></div><div class="card"><h3 style="color:var(--wine)">Burgunderfarbenes Laub</h3><p style="font-size:0.85rem;color:var(--dim)">Sept–Nov. 3€/Stiel. Reiche, stimmungsvolle Texturen.</p></div></div>`,
-  winter:`<div class="g3"><div class="card"><h3 style="color:var(--rose)">Amaryllis</h3><p style="font-size:0.85rem;color:var(--dim)">Nov–Feb. 8€/Stiel. Dramatische Trompetenblüten.</p></div><div class="card"><h3 style="color:var(--sage)">Christrose</h3><p style="font-size:0.85rem;color:var(--dim)">Dec–March. 7€/Stiel. Die Weihnachtsrose.</p></div><div class="card"><h3 style="color:var(--cream)">Paperwhites</h3><p style="font-size:0.85rem;color:var(--dim)">Nov–Feb. 3€/Stiel. Intensiv duftend.</p></div><div class="card"><h3 style="color:var(--lavender)">Hyazinthe</h3><p style="font-size:0.85rem;color:var(--dim)">Dec–March. 4€/Stiel. Süßer Duft.</p></div><div class="card"><h3 style="color:var(--coral)">Wachsblume</h3><p style="font-size:0.85rem;color:var(--dim)">Dec–April. 2€/Stiel. Winzige Sternblüten.</p></div><div class="card"><h3 style="color:var(--sky)">Cymbidium-Orchidee</h3><p style="font-size:0.85rem;color:var(--dim)">Nov–March. 8€/Stiel. Exotischer Luxus.</p></div></div>`
+  spring:`<div class="g3"><div class="card"><h3 style="color:var(--rose)">Pfingstrosen</h3><p style="font-size:0.85rem;color:var(--dim)">Nur April–Juni. 6€-9€/Stiel. Früh buchen.</p></div><div class="card"><h3 style="color:var(--lavender)">Ranunkel</h3><p style="font-size:0.85rem;color:var(--dim)">März–Mai. 3€-5€/Stiel. Geschichtete Perfektion.</p></div><div class="card"><h3 style="color:var(--peach)">Tulpen</h3><p style="font-size:0.85rem;color:var(--dim)">Feb–May. 2,50€-4€/Stiel. Französische & Papageien-Tulpen.</p></div><div class="card"><h3 style="color:var(--sage)">Wicken</h3><p style="font-size:0.85rem;color:var(--dim)">April–Juni. 6€/Bund. Himmlischer Duft.</p></div><div class="card"><h3 style="color:var(--sky)">Anemonen</h3><p style="font-size:0.85rem;color:var(--dim)">Jan–April. 4,50€/Stiel. Dramatische Zentren.</p></div><div class="card"><h3 style="color:var(--gold)">Kirschblüte</h3><p style="font-size:0.85rem;color:var(--dim)">März–April. 12€/Zweig. Ätherisch.</p></div></div>`,
+  summer:`<div class="g3"><div class="card"><h3 style="color:var(--rose)">Dahlien</h3><p style="font-size:0.85rem;color:var(--dim)">Juli–Oktober. 4€-6€/Stiel. Café au Lait ist der Star.</p></div><div class="card"><h3 style="color:var(--gold)">Sonnenblumen</h3><p style="font-size:0.85rem;color:var(--dim)">Juni–Sep. 2€/Stiel. Pure Fröhlichkeit.</p></div><div class="card"><h3 style="color:var(--sky)">Hortensien</h3><p style="font-size:0.85rem;color:var(--dim)">Juni–Okt. 5€/Stiel. Maximales Volumen.</p></div><div class="card"><h3 style="color:var(--lavender)">Lavendel</h3><p style="font-size:0.85rem;color:var(--dim)">Juni–Aug. 2,50€/Stiel. Duftiges Violett.</p></div><div class="card"><h3 style="color:var(--peach)">Gartenrosen</h3><p style="font-size:0.85rem;color:var(--dim)">Mai–Okt. 4,50€/Stiel. Hochsaison.</p></div><div class="card"><h3 style="color:var(--sage)">Lisianthus</h3><p style="font-size:0.85rem;color:var(--dim)">Juni–Sep. 4€/Stiel. Rosen-Doppelgänger.</p></div></div>`,
+  fall:`<div class="g3"><div class="card"><h3 style="color:var(--rose)">Dahlien</h3><p style="font-size:0.85rem;color:var(--dim)">Hauptsaison. 4€-6€/Stiel. Reiche Juwelenfarben.</p></div><div class="card"><h3 style="color:var(--gold)">Chrysanthemen</h3><p style="font-size:0.85rem;color:var(--dim)">Sep–Nov. 2€/Stiel. Riesige Pompom-Chrysanthemen.</p></div><div class="card"><h3 style="color:var(--peach)">Ringelblumen</h3><p style="font-size:0.85rem;color:var(--dim)">Sep–Nov. 1,50€/Stiel. Warmes Orange und Gold.</p></div><div class="card"><h3 style="color:var(--sage)">Limelight-Hortensie</h3><p style="font-size:0.85rem;color:var(--dim)">Aug–Okt. 6€/Stiel. Wird im Herbst rosa.</p></div><div class="card"><h3 style="color:var(--mauve)">Protea</h3><p style="font-size:0.85rem;color:var(--dim)">Ganzjährig. 10€/Stiel. Architektonisches Statement.</p></div><div class="card"><h3 style="color:var(--wine)">Burgunderfarbenes Laub</h3><p style="font-size:0.85rem;color:var(--dim)">Sep–Nov. 3€/Stiel. Reiche, stimmungsvolle Texturen.</p></div></div>`,
+  winter:`<div class="g3"><div class="card"><h3 style="color:var(--rose)">Amaryllis</h3><p style="font-size:0.85rem;color:var(--dim)">Nov–Feb. 8€/Stiel. Dramatische Trompetenblüten.</p></div><div class="card"><h3 style="color:var(--sage)">Christrose</h3><p style="font-size:0.85rem;color:var(--dim)">Dez–März. 7€/Stiel. Die Weihnachtsrose.</p></div><div class="card"><h3 style="color:var(--cream)">Tazetten</h3><p style="font-size:0.85rem;color:var(--dim)">Nov–Feb. 3€/Stiel. Intensiv duftend.</p></div><div class="card"><h3 style="color:var(--lavender)">Hyazinthe</h3><p style="font-size:0.85rem;color:var(--dim)">Dez–März. 4€/Stiel. Süßer Duft.</p></div><div class="card"><h3 style="color:var(--coral)">Wachsblume</h3><p style="font-size:0.85rem;color:var(--dim)">Dec–April. 2€/Stiel. Winzige Sternblüten.</p></div><div class="card"><h3 style="color:var(--sky)">Cymbidium-Orchidee</h3><p style="font-size:0.85rem;color:var(--dim)">Nov–März. 8€/Stiel. Exotischer Luxus.</p></div></div>`
 };
 function showSeason(btn,s){
   document.querySelectorAll('.season-tab').forEach(b=>b.classList.remove('active'));
@@ -2514,7 +2514,7 @@ initShapes();
 // ========================================================================
 const monthData={
   jan:{name:'Januar',bouquets:[
-    {name:'Winterweiße Eleganz',flowers:['5× Weiße Amaryllis','8× Paperwhites','6× Weiße Ranunkeln','5× Silber-Brunia','8× Samen-Eukalyptus'],palette:['#FFFFFF','#F0F0F0','#E8E0D0','#C0C8C0'],cost:'95€',img:'1552222661-467bd51aa1f4'},
+    {name:'Winterweiße Eleganz',flowers:['5× Weiße Amaryllis','8× Tazetten','6× Weiße Ranunkeln','5× Silber-Brunia','8× Samen-Eukalyptus'],palette:['#FFFFFF','#F0F0F0','#E8E0D0','#C0C8C0'],cost:'95€',img:'1552222661-467bd51aa1f4'},
     {name:'Frostige Beere',flowers:['6× Rote Rose','4× Weiße Hortensie','8× Hypericum-Beere','6× Kieferngrün','4× Weiße Wachsblume'],palette:['#CC0033','#FFFFFF','#990022','#2D4F2D'],cost:'78€',img:'1536266694648-914d29a935f9'},
     {name:'Mittwintertraum',flowers:['4× Cymbidium-Orchidee','6× Violette Christrose','5× Silberblatt','6× Lavendel','4× Silberdollar-Eukalyptus'],palette:['#E0AAFF','#8B668B','#C0C0C0','#A8D5BA'],cost:'120€',img:'1599463740831-a5015ef7b65a'}
   ]},
@@ -2534,7 +2534,7 @@ const monthData={
     {name:'Frühlings-Gartenparty',flowers:['6× Anemone','5× Ranunkeln','4× Schachbrettblume','5× Christrose','8× Rankender Jasmin'],palette:['#FFFFFF','#FF6B8A','#663399','#4F7942'],cost:'85€',img:'1519378058457-4c29a0a2efac'}
   ]},
   may:{name:'Mai',bouquets:[
-    {name:'Pfingstrosen-Hochsaison Luxus',flowers:['8× Pfingstrosen (gemischt)','5× Garden Rose','6× Wicken','4× Klematis','6× Rankendes Grün'],palette:['#FF8FAB','#FFC2D1','#FFFFFF','#A8D5BA'],cost:'145€',img:'1560256608-43f0b6f7588e'},
+    {name:'Pfingstrosen-Hochsaison Luxus',flowers:['8× Pfingstrosen (gemischt)','5× Gartenrose','6× Wicken','4× Klematis','6× Rankendes Grün'],palette:['#FF8FAB','#FFC2D1','#FFFFFF','#A8D5BA'],cost:'145€',img:'1560256608-43f0b6f7588e'},
     {name:'Muttertags-Klassiker',flowers:['6× Rosa Rose','4× Weiße Pfingstrose','6× Ranunculus','5× Lavendel','6× Eukalyptus'],palette:['#FF6B8A','#FFFFFF','#FFC2D1','#C8B6FF'],cost:'98€',img:'1594149596808-e3b6174968b3'},
     {name:'Gartenhütte',flowers:['5× Fingerhut','4× Rittersporn','6× Wicken','5× Frauenmantel','8× Farn'],palette:['#FF6B8A','#6699CC','#E0AAFF','#4F7942'],cost:'75€',img:'1505990482843-ba05d52c02c7'}
   ]},
@@ -2544,7 +2544,7 @@ const monthData={
     {name:'Lavendelfelder',flowers:['10× Lavendel','5× Violetter Lisianthus','4× Weiße Rose','5× Skabiose','6× Silberdollar-Eukalyptus'],palette:['#C8B6FF','#E0AAFF','#FFFFFF','#C0C8C0'],cost:'72€',img:'1499002238440-d264edd596ec'}
   ]},
   jul:{name:'Juli',bouquets:[
-    {name:'Dahliensaison beginnt',flowers:['6× Dahlie (Café au Lait)','4× Garden Rose','5× Lisianthus','4× Astilbe','6× Eukalyptus'],palette:['#DEB887','#FFC2D1','#FFFFFF','#A8D5BA'],cost:'95€',img:'1601021215663-ee72b7063578'},
+    {name:'Dahliensaison beginnt',flowers:['6× Dahlie (Café au Lait)','4× Gartenrose','5× Lisianthus','4× Astilbe','6× Eukalyptus'],palette:['#DEB887','#FFC2D1','#FFFFFF','#A8D5BA'],cost:'95€',img:'1601021215663-ee72b7063578'},
     {name:'Nationalfeiertag',flowers:['6× Blauer Rittersporn','6× Rote Rose','6× Weiße Hortensie','5× Rote Strauchrosen','5× Milchstern'],palette:['#CC0033','#FFFFFF','#003399','#003399'],cost:'82€',img:'1527061011665-3652c757a4d4'},
     {name:'Tropisches Paradies',flowers:['3× Paradiesvogelblume','4× Orchidee','3× Anthurie','4× Protea','5× Monstera-Blatt'],palette:['#FF6600','#FF00CC','#FF3333','#006600'],cost:'110€',img:'1622110084090-c83d2d627aa1'}
   ]},
@@ -2670,20 +2670,20 @@ const subData={
   'Pfingstrose':{img:'1511201173873-c327e63eb6c4',price:'6–9€/Stiel',season:'April–Juni',subs:[
     {name:'Gartenrose',why:'Ähnlich üppige, runde Form mit geschichteten Blütenblättern. Ganzjährig verfügbar.',price:'4–5€/Stiel',avail:'Ganzjährig',img:'1582794543139-8ac9cb0f7b11'},
     {name:'Ranunkel',why:'Hauchdünne, geschichtete Blütenblätter imitieren den Pfingstrosen-Look zu einem Bruchteil der Kosten.',price:'3–4€/Stiel',avail:'Jan–Mai',img:'1490750967868-88aa4f44baee'},
-    {name:'Carnation (gerüscht)',why:'Moderne, gerüschte Nelken sehen überraschend wie kleine Pfingstrosen aus.',price:'1–2€/Stiel',avail:'Ganzjährig',img:'1578534102052-70f4c14ee0e7'}
+    {name:'Nelke (gerüscht)',why:'Moderne, gerüschte Nelken sehen überraschend wie kleine Pfingstrosen aus.',price:'1–2€/Stiel',avail:'Ganzjährig',img:'1578534102052-70f4c14ee0e7'}
   ]},
   'Orchidee':{img:'1599463740831-a5015ef7b65a',price:'8–12€/Stiel',season:'Ganzjährig',subs:[
     {name:'Lisianthus',why:'Zarte, gerüschte Blütenblätter ähnlich der Orchideen-Eleganz zum halben Preis.',price:'3–4€/Stiel',avail:'Ganzjährig',img:'1519378058457-4c29a0a2efac'},
     {name:'Wicke',why:'Gleiche anmutige, schmetterlingsartige Form mit zusätzlichem Duft.',price:'1–2€/Stiel',avail:'Mär–Jun',img:'1505990482843-ba05d52c02c7'},
-    {name:'Freesia',why:'Gebogene Stiele mit mehreren Blüten erinnern an Orchideenrispen.',price:'2–3€/Stiel',avail:'Ganzjährig',img:'1532774994231-7c01a28457b6'}
+    {name:'Freesie',why:'Gebogene Stiele mit mehreren Blüten erinnern an Orchideenrispen.',price:'2–3€/Stiel',avail:'Ganzjährig',img:'1532774994231-7c01a28457b6'}
   ]},
   'Dahlie':{img:'1601021215663-ee72b7063578',price:'4–6€/Stiel',season:'Jul–Okt',subs:[
-    {name:'Chrysanthemum',why:'Ganzjährig verfügbar in ähnlichen Pompon-Formen und satten Farben.',price:'1–2€/Stiel',avail:'Ganzjährig',img:'1578534102052-70f4c14ee0e7'},
+    {name:'Chrysantheme',why:'Ganzjährig verfügbar in ähnlichen Pompon-Formen und satten Farben.',price:'1–2€/Stiel',avail:'Ganzjährig',img:'1578534102052-70f4c14ee0e7'},
     {name:'Zinnia',why:'Gleiche kühne, geometrische Form mit leuchtenden Juwelentönen.',price:'2–3€/Stiel',avail:'Jun–Okt',img:'1531130513023-1b5bb7bcfb9e'},
-    {name:'Carnation (Fußball)',why:'Große, gerüschte Köpfe imitieren Teller-Dahlien überraschend gut.',price:'2–3€/Stiel',avail:'Ganzjährig',img:'1554773228756-d8e1fe6aa4a7'}
+    {name:'Nelke (Kugel-Nelke)',why:'Große, gerüschte Köpfe imitieren Teller-Dahlien überraschend gut.',price:'2–3€/Stiel',avail:'Ganzjährig',img:'1554773228756-d8e1fe6aa4a7'}
   ]},
   'Hortensie':{img:'1623201530307-c1d678f68459',price:'5–7€/Stiel',season:'Jun–Okt',subs:[
-    {name:'Carnation (gruppiert)',why:'5-6 zusammenstecken und sie sehen aus wie ein Hortensienkopf.',price:'1–2€/Stiel',avail:'Ganzjährig',img:'1578534102052-70f4c14ee0e7'},
+    {name:'Nelke (gruppiert)',why:'5-6 zusammenstecken und sie sehen aus wie ein Hortensienkopf.',price:'1–2€/Stiel',avail:'Ganzjährig',img:'1578534102052-70f4c14ee0e7'},
     {name:'Wilde Möhre',why:'Ähnliche gebündelte Form mit einer wilderen, organischeren Textur.',price:'1–2€/Stiel',avail:'Mai–Aug',img:'1532774994231-7c01a28457b6'},
     {name:'Levkoje',why:'Dichte Blütentrauben bieten ähnliches Volumen in passenden Farben.',price:'3–4€/Stiel',avail:'Ganzjährig',img:'1519378058457-4c29a0a2efac'}
   ]},
@@ -2695,7 +2695,7 @@ const subData={
   'Tulpe':{img:'1559150180-2467f804f9bf',price:'2–4€/Stiel',season:'Feb–Mai',subs:[
     {name:'Ranunkel',why:'Beide Frühlingsblumen mit klaren, eleganten Formen.',price:'3–4€/Stiel',avail:'Jan–Mai',img:'1490750967868-88aa4f44baee'},
     {name:'Calla-Lilie',why:'Ähnlich schlanke, skulpturale Silhouette.',price:'3–5€/Stiel',avail:'Ganzjährig',img:'1605485236949-5775b9676c78'},
-    {name:'Freesia',why:'Gleiches Frühlingsgefühl mit zusätzlichem Duft.',price:'2–3€/Stiel',avail:'Ganzjährig',img:'1532774994231-7c01a28457b6'}
+    {name:'Freesie',why:'Gleiches Frühlingsgefühl mit zusätzlichem Duft.',price:'2–3€/Stiel',avail:'Ganzjährig',img:'1532774994231-7c01a28457b6'}
   ]},
   'Sonnenblume':{img:'1588834747799-82f691b36ff6',price:'2–3€/Stiel',season:'Jun–Sep',subs:[
     {name:'Gerbera',why:'Ähnlich kühnes, rundes Gesicht in vielen Sonnenuntergangsfarben.',price:'2–3€/Stiel',avail:'Ganzjährig',img:'1531130513023-1b5bb7bcfb9e'},
@@ -2725,7 +2725,7 @@ const subData={
   'Wicke':{img:'1505990482843-ba05d52c02c7',price:'6€/Bund',season:'Apr–Jun',subs:[
     {name:'Lisianthus',why:'Ähnlich gerüschte, zarte Blütenblätter in Pastelltönen.',price:'3–4€/Stiel',avail:'Ganzjährig',img:'1519378058457-4c29a0a2efac'},
     {name:'Levkoje',why:'Ähnlich weiche, gebündelte Blüten mit herrlichem Duft.',price:'3–4€/Stiel',avail:'Ganzjährig',img:'1554773228756-d8e1fe6aa4a7'},
-    {name:'Freesia',why:'Zarte, gebogene Stiele mit ähnlich luftiger Qualität und Duft.',price:'2–3€/Stiel',avail:'Ganzjährig',img:'1532774994231-7c01a28457b6'}
+    {name:'Freesie',why:'Zarte, gebogene Stiele mit ähnlich luftiger Qualität und Duft.',price:'2–3€/Stiel',avail:'Ganzjährig',img:'1532774994231-7c01a28457b6'}
   ]}
 };
 function initSubs(){
