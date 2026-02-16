@@ -204,6 +204,8 @@ h3{font-size:1.05rem;font-weight:700;margin-bottom:6px}
 .sidebar{position:fixed;top:60px;left:0;bottom:0;width:56px;background:rgba(15,10,26,0.97);backdrop-filter:blur(24px);border-right:1px solid rgba(255,255,255,0.06);z-index:999;overflow-y:auto;overflow-x:hidden;transition:width 0.3s cubic-bezier(0.16,1,0.3,1);scrollbar-width:none}
 .sidebar::-webkit-scrollbar{display:none}
 .sidebar.expanded{width:230px}
+@media(min-width:901px){.sidebar:hover:not(.pinned){width:230px}.sidebar:hover:not(.pinned) .sb-label{display:block}.sidebar:hover:not(.pinned) .sidebar-cat-label{display:block}.sidebar:hover:not(.pinned) ~ .main-wrap{margin-left:230px}}
+@media(min-width:1400px){.sidebar.pinned{width:230px}.sidebar.pinned .sb-label{display:block}.sidebar.pinned .sidebar-cat-label{display:block}.sidebar.pinned ~ .main-wrap{margin-left:230px}}
 .sidebar-toggle{width:56px;height:48px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--dim);font-size:20px;border-bottom:1px solid rgba(255,255,255,0.04);transition:color 0.2s;flex-shrink:0}
 .sidebar-toggle:hover{color:var(--rose)}
 .sidebar-cat{padding:8px 0 4px;margin-top:4px;border-top:1px solid rgba(255,255,255,0.04)}
@@ -1060,7 +1062,7 @@ h3{font-size:1.05rem;font-weight:700;margin-bottom:6px}
   <div class="card" id="quizArea">
     <div id="quizQ" style="text-align:center">
       <div style="font-size:0.75rem;color:var(--dim);margin-bottom:8px">Question <span id="quizNum">1</span> of 5</div>
-      <h3 id="quizQuestion" style="margin-bottom:20px;font-size:1.2rem">What's the occasion?</h3>
+      <h3 id="quizQuestion" style="margin-bottom:20px;font-size:1.2rem">Was ist der Anlass?</h3>
       <div id="quizOptions" style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center"></div>
     </div>
     <div id="quizResult" style="display:none"></div>
@@ -2018,9 +2020,20 @@ h3{font-size:1.05rem;font-weight:700;margin-bottom:6px}
 function toggleSidebar(){
   const sb=document.getElementById('sidebar');
   const ov=document.getElementById('sidebarOverlay');
-  sb.classList.toggle('expanded');
-  if(window.innerWidth<=900) ov.classList.toggle('show');
+  if(window.innerWidth<=900){
+    sb.classList.toggle('expanded');
+    ov.classList.toggle('show');
+  } else {
+    sb.classList.toggle('expanded');
+  }
 }
+// Auto-pin sidebar on wide screens
+function checkSidebarPin(){
+  const sb=document.getElementById('sidebar');
+  if(window.innerWidth>=1400){sb.classList.add('pinned')}else{sb.classList.remove('pinned')}
+}
+checkSidebarPin();
+window.addEventListener('resize',checkSidebarPin);
 // Close sidebar on link click (mobile)
 document.querySelectorAll('.sidebar-item').forEach(a=>{
   a.addEventListener('click',()=>{
@@ -2237,70 +2250,70 @@ const pairData={
     {name:'Lavender',why:'Violette Zweige verleihen Höhe und himmlischen Duft',img:'1477511801984-4ad318ed9846'}
   ]},
   'Dahlia':{img:'1601021215663-ee72b7063578',pairs:[
-    {name:'Rose',why:'Classic meets dramatic — beautiful scale contrast',img:'1530906622963-8a60586a49c7'},
-    {name:'Eucalyptus',why:'Silvery foliage frames the dahlia\'s bold geometry',img:'1541123603104-512919d6a96c'},
-    {name:'Wildflower',why:'Loose wildflowers create a romantic, garden-style frame',img:'1532774994231-7c01a28457b6'},
-    {name:'Sunflower',why:'Bold + bold = maximum visual impact for summer events',img:'1588834747799-82f691b36ff6'}
+    {name:'Rose',why:'Klassik trifft Dramatik — wunderschöner Größenkontrast',img:'1530906622963-8a60586a49c7'},
+    {name:'Eucalyptus',why:'Silbriges Laub rahmt die kühne Geometrie der Dahlie ein',img:'1541123603104-512919d6a96c'},
+    {name:'Wildflower',why:'Lockere Wildblumen schaffen einen romantischen Gartenrahmen',img:'1532774994231-7c01a28457b6'},
+    {name:'Sunflower',why:'Kühn + kühn = maximale Wirkung für Sommerveranstaltungen',img:'1588834747799-82f691b36ff6'}
   ]},
   'Sunflower':{img:'1588834747799-82f691b36ff6',pairs:[
-    {name:'Dahlia',why:'Both big, bold, and summer-perfect — creates a lush look',img:'1533907650686-70576141c030'},
-    {name:'Lavender',why:'Purple and yellow are complementary — nature\'s perfect combo',img:'1477511801984-4ad318ed9846'},
-    {name:'Wildflower',why:'Mixed meadow blooms create a natural, gathered feel',img:'1531130513023-1b5bb7bcfb9e'},
-    {name:'Eucalyptus',why:'Green foliage grounds the sunflower\'s bright warmth',img:'1577238063601-573282246970'}
+    {name:'Dahlia',why:'Beide groß, kühn und sommerlich — erzeugt einen üppigen Look',img:'1533907650686-70576141c030'},
+    {name:'Lavender',why:'Lila und Gelb sind komplementär — Naturs perfekte Kombination',img:'1477511801984-4ad318ed9846'},
+    {name:'Wildflower',why:'Gemischte Wiesenblüten schaffen ein natürliches, gesammeltes Gefühl',img:'1531130513023-1b5bb7bcfb9e'},
+    {name:'Eucalyptus',why:'Grünes Laub erdet die helle Wärme der Sonnenblume',img:'1577238063601-573282246970'}
   ]},
   'Tulip':{img:'1559150180-2467f804f9bf',pairs:[
-    {name:'Ranunculus',why:'Both spring favorites with similar delicate charm',img:'1490750967868-88aa4f44baee'},
-    {name:'Cherry Blossom',why:'Branches add height and springtime magic',img:'1556066138-cfac27159329'},
-    {name:'Hydrangea',why:'Soft mounding heads cradle the tulip\'s clean lines',img:'1527061011665-3652c757a4d4'},
-    {name:'Fern',why:'Curled fiddleheads echo the tulip\'s organic curves',img:'1634291196724-742f2a32463c'}
+    {name:'Ranunculus',why:'Beide Frühlingslieblinge mit ähnlichem zartem Charme',img:'1490750967868-88aa4f44baee'},
+    {name:'Cherry Blossom',why:'Zweige verleihen Höhe und Frühlingsmagie',img:'1556066138-cfac27159329'},
+    {name:'Hydrangea',why:'Weiche, runde Köpfe umrahmen die klaren Linien der Tulpe',img:'1527061011665-3652c757a4d4'},
+    {name:'Fern',why:'Gerollte Farnspitzen spiegeln die organischen Kurven der Tulpe',img:'1634291196724-742f2a32463c'}
   ]},
   'Hydrangea':{img:'1623201530307-c1d678f68459',pairs:[
-    {name:'Rose',why:'The classic pairing — hydrangea as backdrop, roses as stars',img:'1582794543139-8ac9cb0f7b11'},
-    {name:'Orchid',why:'Exotic meets classic — a high-end, luxurious combination',img:'1599463740831-a5015ef7b65a'},
-    {name:'Dahlia',why:'Both have round, full forms — textural richness together',img:'1601021215663-ee72b7063578'},
-    {name:'Lavender',why:'Soft purple tones blend beautifully with blue hydrangeas',img:'1499002238440-d264edd596ec'}
+    {name:'Rose',why:'Die klassische Kombination — Hortensie als Kulisse, Rosen als Stars',img:'1582794543139-8ac9cb0f7b11'},
+    {name:'Orchid',why:'Exotik trifft Klassik — eine hochwertige, luxuriöse Kombination',img:'1599463740831-a5015ef7b65a'},
+    {name:'Dahlia',why:'Beide haben runde, volle Formen — gemeinsamer Texturreichtum',img:'1601021215663-ee72b7063578'},
+    {name:'Lavender',why:'Sanfte Lilatöne verschmelzen wunderschön mit blauen Hortensien',img:'1499002238440-d264edd596ec'}
   ]},
   'Orchid':{img:'1599463740831-a5015ef7b65a',pairs:[
-    {name:'Lily',why:'Both exotic, sculptural — creates a sophisticated arrangement',img:'1605485236949-5775b9676c78'},
-    {name:'Rose',why:'Orchid\'s sleek form contrasts beautifully with rose\'s fullness',img:'1503652601-557d07733ddc'},
-    {name:'Eucalyptus',why:'Minimal greenery lets the orchid\'s beauty shine',img:'1541123603104-512919d6a96c'},
-    {name:'Cherry Blossom',why:'Branches with orchids create stunning Asian-inspired designs',img:'1522748906645-95d8adfd52c7'}
+    {name:'Lily',why:'Beide exotisch, skulptural — schafft ein anspruchsvolles Arrangement',img:'1605485236949-5775b9676c78'},
+    {name:'Rose',why:'Die elegante Form der Orchidee kontrastiert wunderschön mit der Fülle der Rose',img:'1503652601-557d07733ddc'},
+    {name:'Eucalyptus',why:'Minimales Grün lässt die Schönheit der Orchidee erstrahlen',img:'1541123603104-512919d6a96c'},
+    {name:'Cherry Blossom',why:'Zweige mit Orchideen schaffen atemberaubende asiatisch inspirierte Designs',img:'1522748906645-95d8adfd52c7'}
   ]},
   'Lavender':{img:'1477511801984-4ad318ed9846',pairs:[
-    {name:'Rose',why:'The classic Provencal combination — timeless romance',img:'1530906622963-8a60586a49c7'},
-    {name:'Peony',why:'Soft pink peonies with purple lavender = dreamy pastels',img:'1560256608-43f0b6f7588e'},
-    {name:'Sunflower',why:'Purple + yellow complementary colors straight from nature',img:'1551731409-43eb3e517a1a'},
-    {name:'Wildflower',why:'Both have that natural, just-picked-from-the-garden feel',img:'1505990482843-ba05d52c02c7'}
+    {name:'Rose',why:'Die klassische provenzalische Kombination — zeitlose Romantik',img:'1530906622963-8a60586a49c7'},
+    {name:'Peony',why:'Zartrosa Pfingstrosen mit lila Lavendel = traumhafte Pastelltöne',img:'1560256608-43f0b6f7588e'},
+    {name:'Sunflower',why:'Lila + Gelb Komplementärfarben direkt aus der Natur',img:'1551731409-43eb3e517a1a'},
+    {name:'Wildflower',why:'Beide haben das natürliche, frisch-aus-dem-Garten-Gefühl',img:'1505990482843-ba05d52c02c7'}
   ]},
   'Lily':{img:'1605485236949-5775b9676c78',pairs:[
-    {name:'Rose',why:'Traditional, elegant — perfect for formal occasions',img:'1494972308805-463bc619d34e'},
-    {name:'Orchid',why:'Two sculptural flowers create exotic drama',img:'1567748157439-651aca2ff064'},
-    {name:'Fern',why:'Lush greenery balances the lily\'s strong form',img:'1487530811176-3780de880c2d'},
-    {name:'Eucalyptus',why:'Silver leaves soften the lily\'s bold drama',img:'1577238063601-573282246970'}
+    {name:'Rose',why:'Traditionell, elegant — perfekt für formelle Anlässe',img:'1494972308805-463bc619d34e'},
+    {name:'Orchid',why:'Zwei skulpturale Blumen schaffen exotische Dramatik',img:'1567748157439-651aca2ff064'},
+    {name:'Fern',why:'Üppiges Grün balanciert die starke Form der Lilie aus',img:'1487530811176-3780de880c2d'},
+    {name:'Eucalyptus',why:'Silberne Blätter mildern die kühne Dramatik der Lilie',img:'1577238063601-573282246970'}
   ]},
   'Cherry Blossom':{img:'1556066138-cfac27159329',pairs:[
-    {name:'Tulip',why:'Both peak in spring — an ethereal seasonal combination',img:'1520763185298-1b434c919102'},
-    {name:'Peony',why:'Soft blossoms with lush peonies = pure romance',img:'1579664872746-55e2a805d705'},
-    {name:'Orchid',why:'Asian-inspired elegance with minimal, sculptural beauty',img:'1599463740831-a5015ef7b65a'},
-    {name:'Ranunculus',why:'Delicate blooms echo the blossom\'s gentle beauty',img:'1490750967868-88aa4f44baee'}
+    {name:'Tulip',why:'Beide blühen im Frühling — eine ätherische saisonale Kombination',img:'1520763185298-1b434c919102'},
+    {name:'Peony',why:'Zarte Blüten mit üppigen Pfingstrosen = pure Romantik',img:'1579664872746-55e2a805d705'},
+    {name:'Orchid',why:'Asiatisch inspirierte Eleganz mit minimaler, skulpturaler Schönheit',img:'1599463740831-a5015ef7b65a'},
+    {name:'Ranunculus',why:'Zarte Blüten spiegeln die sanfte Schönheit der Kirschblüte',img:'1490750967868-88aa4f44baee'}
   ]},
   'Eucalyptus':{img:'1577238063601-573282246970',pairs:[
-    {name:'Rose',why:'The Instagram-famous combination — modern romance',img:'1582794543139-8ac9cb0f7b11'},
-    {name:'Dahlia',why:'Bold blooms framed by silvery, aromatic foliage',img:'1536091666687-b58e92e5a1fa'},
-    {name:'Orchid',why:'Minimal, architectural — a designer\'s dream combo',img:'1599463740831-a5015ef7b65a'},
-    {name:'Wildflower',why:'Eucalyptus gives structure to free-flowing wildflowers',img:'1530889117621-680d8584d6b4'}
+    {name:'Rose',why:'Die Instagram-berühmte Kombination — moderne Romantik',img:'1582794543139-8ac9cb0f7b11'},
+    {name:'Dahlia',why:'Kühne Blüten eingerahmt von silbrigem, aromatischem Laub',img:'1536091666687-b58e92e5a1fa'},
+    {name:'Orchid',why:'Minimal, architektonisch — die Traumkombination eines Designers',img:'1599463740831-a5015ef7b65a'},
+    {name:'Wildflower',why:'Eukalyptus gibt frei fließenden Wildblumen Struktur',img:'1530889117621-680d8584d6b4'}
   ]},
   'Ranunculus':{img:'1490750967868-88aa4f44baee',pairs:[
-    {name:'Peony',why:'Both have layered, romantic petals — dreamy together',img:'1511201173873-c327e63eb6c4'},
-    {name:'Tulip',why:'Spring best friends — clean lines, soft colors',img:'1559150180-2467f804f9bf'},
-    {name:'Rose',why:'Similar form, different scale — creates depth',img:'1530906622963-8a60586a49c7'},
-    {name:'Sweet Pea',why:'Both delicate and romantic — a florist\'s favorite pair',img:'1505990482843-ba05d52c02c7'}
+    {name:'Peony',why:'Beide haben geschichtete, romantische Blütenblätter — traumhaft zusammen',img:'1511201173873-c327e63eb6c4'},
+    {name:'Tulip',why:'Frühlingsfreunde — klare Linien, sanfte Farben',img:'1559150180-2467f804f9bf'},
+    {name:'Rose',why:'Ähnliche Form, unterschiedliche Größe — erzeugt Tiefe',img:'1530906622963-8a60586a49c7'},
+    {name:'Sweet Pea',why:'Beide zart und romantisch — das Lieblingspaar des Floristen',img:'1505990482843-ba05d52c02c7'}
   ]},
   'Wildflower':{img:'1505990482843-ba05d52c02c7',pairs:[
-    {name:'Lavender',why:'Meadow meets herb garden — natural, organic beauty',img:'1499002238440-d264edd596ec'},
-    {name:'Sunflower',why:'Both exude warmth and countryside charm',img:'1551731409-43eb3e517a1a'},
-    {name:'Dahlia',why:'A focal dahlia anchors a cloud of wild blooms',img:'1568702846914-96b305d2ead1'},
-    {name:'Eucalyptus',why:'Structured greenery grounds the wildflower chaos beautifully',img:'1541123603104-512919d6a96c'}
+    {name:'Lavender',why:'Wiese trifft Kräutergarten — natürliche, organische Schönheit',img:'1499002238440-d264edd596ec'},
+    {name:'Sunflower',why:'Beide strahlen Wärme und ländlichen Charme aus',img:'1551731409-43eb3e517a1a'},
+    {name:'Dahlia',why:'Eine zentrale Dahlie verankert eine Wolke wilder Blüten',img:'1568702846914-96b305d2ead1'},
+    {name:'Eucalyptus',why:'Strukturiertes Grün erdet das Wildblumen-Chaos wunderschön',img:'1541123603104-512919d6a96c'}
   ]}
 };
 function initPairing(){
@@ -2408,11 +2421,11 @@ function showColorScheme(type){
 // 4. STYLE QUIZ
 // ========================================================================
 const quizQuestions=[
-  {q:'What\'s the occasion?',opts:['Hochzeit','Geburtstag','Trauer','Alltägliche Freude']},
-  {q:'Your color vibe?',opts:['Sanft & Romantisch','Kühn & Dramatisch','Natürlich & Organisch','Klassisches Weiß']},
-  {q:'Budget range?',opts:['Unter 75$','$75 – $150','$150 – $300','$300+']},
-  {q:'What matters most?',opts:['Duft','Visuelle Wirkung','Langlebigkeit','Einzigartigkeit']},
-  {q:'Your style?',opts:['Üppig & Überfließend','Minimal & Modern','Wildblumen & Frei','Strukturiert & Elegant']}
+  {q:'Was ist der Anlass?',opts:['Hochzeit','Geburtstag','Trauer','Alltägliche Freude']},
+  {q:'Ihre Farbstimmung?',opts:['Sanft & Romantisch','Kühn & Dramatisch','Natürlich & Organisch','Klassisches Weiß']},
+  {q:'Budgetrahmen?',opts:['Unter 75€','75€ – 150€','150€ – 300€','300€+']},
+  {q:'Was ist am wichtigsten?',opts:['Duft','Visuelle Wirkung','Langlebigkeit','Einzigartigkeit']},
+  {q:'Ihr Stil?',opts:['Üppig & Überfließend','Minimal & Modern','Wildblumen & Frei','Strukturiert & Elegant']}
 ];
 let quizStep=0,quizAnswers=[];
 function initQuiz(){renderQuizQ()}
@@ -2575,7 +2588,7 @@ function genSeason(btn,month){
         ${b.flowers.map(f=>`<div style="font-size:0.8rem;color:var(--dim);padding:4px 8px;border-radius:6px;background:rgba(255,255,255,0.03)">${f}</div>`).join('')}
       </div>
       <div style="display:flex;justify-content:space-between;align-items:center;padding-top:10px;border-top:1px solid var(--bdr)">
-        <span style="font-size:0.72rem;color:var(--dimmer)">Estimated Retail</span>
+        <span style="font-size:0.72rem;color:var(--dimmer)">Geschätzter Verkaufspreis</span>
         <span style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:700;color:var(--gold)">${b.cost}</span>
       </div>
     </div>
@@ -2589,29 +2602,29 @@ function genSeason(btn,month){
 // ========================================================================
 let budOcc='hochzeit';
 const budgetRecipes={
-  wedding:{
-    low:{title:'Sweet & Simple Bridal',items:[{n:'Spray Roses (white)',q:6,p:2.50},{n:'Baby\'s Breath',q:8,p:0.80},{n:'Italian Ruscus',q:5,p:1.75},{n:'Wax Flower',q:4,p:1.25},{n:'Ribbon & Wrap',q:1,p:3.00}]},
-    mid:{title:'Romantic Garden Bride',items:[{n:'Garden Rose (blush)',q:5,p:4.50},{n:'Peony (white)',q:3,p:6.00},{n:'Ranunculus (pink)',q:8,p:3.00},{n:'Sweet Pea (white)',q:5,p:1.20},{n:'Eucalyptus (silver)',q:6,p:2.00}]},
-    high:{title:'Luxury Cascade Bridal',items:[{n:'Peony (blush)',q:6,p:7.50},{n:'Garden Rose (cream)',q:6,p:4.50},{n:'Orchid Sprays',q:3,p:8.00},{n:'Ranunculus',q:8,p:3.50},{n:'Trailing Jasmine',q:4,p:3.00},{n:'Silver Dollar Euc.',q:6,p:2.25}]},
-    premium:{title:'Couture Bridal Statement',items:[{n:'Juliet Rose (peach)',q:8,p:6.00},{n:'Peony (blush)',q:6,p:7.50},{n:'Orchid (white)',q:4,p:8.00},{n:'Ranunculus',q:10,p:3.50},{n:'Sweet Pea',q:8,p:1.50},{n:'Trailing Clematis',q:4,p:4.00},{n:'Seeded Eucalyptus',q:8,p:2.00}]}
+  hochzeit:{
+    low:{title:'Schlicht & Schön Braut',items:[{n:'Spray-Rosen (weiß)',q:6,p:2.50},{n:'Schleierkraut',q:8,p:0.80},{n:'Italienischer Ruscus',q:5,p:1.75},{n:'Wachsblume',q:4,p:1.25},{n:'Band & Umhüllung',q:1,p:3.00}]},
+    mid:{title:'Romantische Gartenbraut',items:[{n:'Gartenrose (zartrosa)',q:5,p:4.50},{n:'Pfingstrose (weiß)',q:3,p:6.00},{n:'Ranunkel (rosa)',q:8,p:3.00},{n:'Wicke (weiß)',q:5,p:1.20},{n:'Eukalyptus (silber)',q:6,p:2.00}]},
+    high:{title:'Luxus-Kaskaden-Brautstrauß',items:[{n:'Pfingstrose (zartrosa)',q:6,p:7.50},{n:'Gartenrose (creme)',q:6,p:4.50},{n:'Orchideen-Rispen',q:3,p:8.00},{n:'Ranunkel',q:8,p:3.50},{n:'Rankender Jasmin',q:4,p:3.00},{n:'Silberdollar-Eukalyptus',q:6,p:2.25}]},
+    premium:{title:'Couture-Braut-Statement',items:[{n:'Juliet-Rose (pfirsich)',q:8,p:6.00},{n:'Pfingstrose (zartrosa)',q:6,p:7.50},{n:'Orchidee (weiß)',q:4,p:8.00},{n:'Ranunkel',q:10,p:3.50},{n:'Wicke',q:8,p:1.50},{n:'Rankende Clematis',q:4,p:4.00},{n:'Eukalyptus',q:8,p:2.00}]}
   },
-  birthday:{
-    low:{title:'Happy Birthday Bunch',items:[{n:'Sunflower',q:3,p:2.50},{n:'Daisy (mixed)',q:6,p:1.00},{n:'Carnation (bright)',q:5,p:1.50},{n:'Greenery',q:4,p:1.50}]},
-    mid:{title:'Birthday Bloom Box',items:[{n:'Rose (bright mix)',q:6,p:3.75},{n:'Dahlia',q:3,p:5.00},{n:'Lisianthus',q:4,p:4.00},{n:'Wax Flower',q:5,p:1.25},{n:'Eucalyptus',q:5,p:2.00}]},
-    high:{title:'Birthday Luxe Vase',items:[{n:'Rose (premium mix)',q:8,p:4.50},{n:'Dahlia (dinnerplate)',q:4,p:5.50},{n:'Hydrangea',q:3,p:5.50},{n:'Ranunculus',q:6,p:3.50},{n:'Eucalyptus',q:6,p:2.00}]},
-    premium:{title:'Grand Birthday Arrangement',items:[{n:'Orchid Stems',q:4,p:8.00},{n:'Rose (premium)',q:10,p:4.50},{n:'Peony',q:4,p:7.00},{n:'Dahlia',q:5,p:5.50},{n:'Hydrangea',q:4,p:5.50},{n:'Trailing Greenery',q:8,p:2.00}]}
+  geburtstag:{
+    low:{title:'Fröhlicher Geburtstagsstrauß',items:[{n:'Sonnenblume',q:3,p:2.50},{n:'Margerite (gemischt)',q:6,p:1.00},{n:'Nelke (bunt)',q:5,p:1.50},{n:'Grün',q:4,p:1.50}]},
+    mid:{title:'Geburtstags-Blütenbox',items:[{n:'Rose (bunte Mischung)',q:6,p:3.75},{n:'Dahlie',q:3,p:5.00},{n:'Lisianthus',q:4,p:4.00},{n:'Wachsblume',q:5,p:1.25},{n:'Eukalyptus',q:5,p:2.00}]},
+    high:{title:'Geburtstags-Luxusvase',items:[{n:'Rose (Premium-Mix)',q:8,p:4.50},{n:'Dahlie (Tellerdahlie)',q:4,p:5.50},{n:'Hortensie',q:3,p:5.50},{n:'Ranunkel',q:6,p:3.50},{n:'Eukalyptus',q:6,p:2.00}]},
+    premium:{title:'Großes Geburtstags-Arrangement',items:[{n:'Orchideen-Stiele',q:4,p:8.00},{n:'Rose (Premium)',q:10,p:4.50},{n:'Pfingstrose',q:4,p:7.00},{n:'Dahlie',q:5,p:5.50},{n:'Hortensie',q:4,p:5.50},{n:'Rankendes Grün',q:8,p:2.00}]}
   },
-  sympathy:{
-    low:{title:'Gentle Sympathy Spray',items:[{n:'White Carnation',q:8,p:1.50},{n:'White Daisy',q:5,p:1.00},{n:'Baby\'s Breath',q:6,p:0.80},{n:'Fern',q:5,p:1.50}]},
-    mid:{title:'Peace & Comfort',items:[{n:'White Rose',q:6,p:3.75},{n:'White Lily',q:3,p:4.00},{n:'White Stock',q:4,p:3.00},{n:'White Wax Flower',q:5,p:1.25},{n:'Italian Ruscus',q:6,p:1.75}]},
-    high:{title:'Eternal Grace Wreath',items:[{n:'White Rose',q:10,p:3.75},{n:'White Hydrangea',q:4,p:5.50},{n:'White Orchid',q:3,p:8.00},{n:'White Lily',q:4,p:4.00},{n:'Eucalyptus',q:8,p:2.00}]},
-    premium:{title:'Grand Tribute Arrangement',items:[{n:'White Peony',q:6,p:7.50},{n:'White Garden Rose',q:8,p:4.50},{n:'Calla Lily',q:5,p:6.00},{n:'White Orchid',q:4,p:8.00},{n:'Hydrangea',q:4,p:5.50},{n:'Trailing Greenery',q:10,p:2.00}]}
+  trauer:{
+    low:{title:'Sanftes Trauergesteck',items:[{n:'Weiße Nelke',q:8,p:1.50},{n:'Weiße Margerite',q:5,p:1.00},{n:'Schleierkraut',q:6,p:0.80},{n:'Farn',q:5,p:1.50}]},
+    mid:{title:'Frieden & Trost',items:[{n:'Weiße Rose',q:6,p:3.75},{n:'Weiße Lilie',q:3,p:4.00},{n:'Weiße Levkoje',q:4,p:3.00},{n:'Weiße Wachsblume',q:5,p:1.25},{n:'Italienischer Ruscus',q:6,p:1.75}]},
+    high:{title:'Ewige Anmut Kranz',items:[{n:'Weiße Rose',q:10,p:3.75},{n:'Weiße Hortensie',q:4,p:5.50},{n:'Weiße Orchidee',q:3,p:8.00},{n:'Weiße Lilie',q:4,p:4.00},{n:'Eukalyptus',q:8,p:2.00}]},
+    premium:{title:'Großes Ehren-Arrangement',items:[{n:'Weiße Pfingstrose',q:6,p:7.50},{n:'Weiße Gartenrose',q:8,p:4.50},{n:'Calla-Lilie',q:5,p:6.00},{n:'Weiße Orchidee',q:4,p:8.00},{n:'Hortensie',q:4,p:5.50},{n:'Rankendes Grün',q:10,p:2.00}]}
   },
-  everyday:{
-    low:{title:'Cheerful Market Bunch',items:[{n:'Carnation (mixed)',q:6,p:1.50},{n:'Alstroemeria',q:5,p:1.75},{n:'Daisy',q:5,p:1.00},{n:'Greenery',q:4,p:1.50}]},
-    mid:{title:'Kitchen Table Delight',items:[{n:'Rose (mixed)',q:5,p:3.75},{n:'Tulip',q:5,p:2.75},{n:'Snapdragon',q:3,p:2.50},{n:'Chamomile',q:4,p:1.50},{n:'Eucalyptus',q:5,p:2.00}]},
-    high:{title:'Designer Living Room',items:[{n:'Garden Rose',q:6,p:4.50},{n:'Ranunculus',q:6,p:3.50},{n:'Dahlia',q:3,p:5.00},{n:'Hydrangea',q:2,p:5.50},{n:'Lavender',q:5,p:2.00},{n:'Eucalyptus',q:5,p:2.00}]},
-    premium:{title:'Luxury Statement Piece',items:[{n:'Peony',q:5,p:7.50},{n:'Garden Rose',q:6,p:4.50},{n:'Orchid Stems',q:3,p:8.00},{n:'Dahlia',q:4,p:5.50},{n:'Ranunculus',q:6,p:3.50},{n:'Trailing Eucalyptus',q:8,p:2.25}]}
+  alltag:{
+    low:{title:'Fröhlicher Marktstrauß',items:[{n:'Nelke (gemischt)',q:6,p:1.50},{n:'Alstroemeria',q:5,p:1.75},{n:'Margerite',q:5,p:1.00},{n:'Grün',q:4,p:1.50}]},
+    mid:{title:'Küchentisch-Freude',items:[{n:'Rose (gemischt)',q:5,p:3.75},{n:'Tulpe',q:5,p:2.75},{n:'Löwenmaul',q:3,p:2.50},{n:'Kamille',q:4,p:1.50},{n:'Eukalyptus',q:5,p:2.00}]},
+    high:{title:'Designer-Wohnzimmer',items:[{n:'Gartenrose',q:6,p:4.50},{n:'Ranunkel',q:6,p:3.50},{n:'Dahlie',q:3,p:5.00},{n:'Hortensie',q:2,p:5.50},{n:'Lavendel',q:5,p:2.00},{n:'Eukalyptus',q:5,p:2.00}]},
+    premium:{title:'Luxus-Statement-Stück',items:[{n:'Pfingstrose',q:5,p:7.50},{n:'Gartenrose',q:6,p:4.50},{n:'Orchideen-Stiele',q:3,p:8.00},{n:'Dahlie',q:4,p:5.50},{n:'Ranunkel',q:6,p:3.50},{n:'Rankender Eukalyptus',q:8,p:2.25}]}
   }
 };
 function getBudgetTier(val){
@@ -2619,7 +2632,7 @@ function getBudgetTier(val){
 }
 function calcBudgetBouquet(){
   const val=+document.getElementById('budgetSlider').value;
-  document.getElementById('budgetVal').textContent='$'+val;
+  document.getElementById('budgetVal').textContent=val+'€';
   const tier=getBudgetTier(val);
   const recipe=budgetRecipes[budOcc][tier];
   if(!recipe)return;
@@ -2630,16 +2643,16 @@ function calcBudgetBouquet(){
   const retail=val;
   const profit=retail-wholesale-labor-supplies;
   document.getElementById('budgetResult').innerHTML=`
-    <h3 style="color:var(--sage);margin-bottom:4px">Your $${val} ${budOcc.charAt(0).toUpperCase()+budOcc.slice(1)} Bouquet</h3>
-    <div style="font-size:0.78rem;color:var(--dim);margin-bottom:16px">${recipe.title} — maximum beauty for your budget</div>
+    <h3 style="color:var(--sage);margin-bottom:4px">Ihr ${val}€ ${budOcc.charAt(0).toUpperCase()+budOcc.slice(1)}-Strauß</h3>
+    <div style="font-size:0.78rem;color:var(--dim);margin-bottom:16px">${recipe.title} — maximale Schönheit für Ihr Budget</div>
     <div style="display:flex;flex-direction:column;gap:8px" id="budgetRecipe">
       ${recipe.items.map(it=>`<div style="display:flex;justify-content:space-between;padding:8px 12px;border-radius:8px;background:rgba(255,255,255,0.03);font-size:0.85rem"><span>${it.q}× ${it.n}</span><span style="color:var(--sage)">$${(it.q*it.p).toFixed(2)}</span></div>`).join('')}
     </div>
     <div class="calc-total" style="margin-top:12px">
-      <div style="display:flex;justify-content:space-between"><span style="color:var(--dim)">Wholesale</span><span style="font-weight:700">$${wholesale.toFixed(2)}</span></div>
-      <div style="display:flex;justify-content:space-between;margin-top:6px"><span style="color:var(--dim)">Labor & Supplies</span><span style="font-weight:700">$${(labor+supplies).toFixed(2)}</span></div>
-      <div style="display:flex;justify-content:space-between;margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.08)"><span style="font-weight:700">Retail Price</span><span style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;color:var(--sage)">$${retail}</span></div>
-      <div style="display:flex;justify-content:space-between;margin-top:4px"><span style="color:var(--dim)">Your Profit</span><span style="font-weight:700;color:var(--gold)">$${profit.toFixed(2)}</span></div>
+      <div style="display:flex;justify-content:space-between"><span style="color:var(--dim)">Einkaufspreis</span><span style="font-weight:700">${wholesale.toFixed(2)}€</span></div>
+      <div style="display:flex;justify-content:space-between;margin-top:6px"><span style="color:var(--dim)">Arbeit & Material</span><span style="font-weight:700">${(labor+supplies).toFixed(2)}€</span></div>
+      <div style="display:flex;justify-content:space-between;margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.08)"><span style="font-weight:700">Verkaufspreis</span><span style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;color:var(--sage)">${retail}€</span></div>
+      <div style="display:flex;justify-content:space-between;margin-top:4px"><span style="color:var(--dim)">Ihr Gewinn</span><span style="font-weight:700;color:var(--gold)">${profit.toFixed(2)}€</span></div>
     </div>
   `;
 }
@@ -2654,65 +2667,65 @@ function setBudOcc(btn,occ){
 // 8. FLOWER SUBSTITUTION FINDER
 // ========================================================================
 const subData={
-  'Peony':{img:'1511201173873-c327e63eb6c4',price:'$6–9/stem',season:'April–June',subs:[
-    {name:'Garden Rose',why:'Similar lush, rounded shape with layered petals. Available year-round.',price:'$4–5/stem',avail:'Year-round',img:'1582794543139-8ac9cb0f7b11'},
-    {name:'Ranunculus',why:'Layered paper-thin petals mimic the peony look at a fraction of the cost.',price:'$3–4/stem',avail:'Jan–May',img:'1490750967868-88aa4f44baee'},
-    {name:'Carnation (ruffled)',why:'Modern, ruffled carnations look surprisingly like small peonies.',price:'$1–2/stem',avail:'Year-round',img:'1578534102052-70f4c14ee0e7'}
+  'Pfingstrose':{img:'1511201173873-c327e63eb6c4',price:'6–9€/Stiel',season:'April–Juni',subs:[
+    {name:'Garden Rose',why:'Ähnlich üppige, runde Form mit geschichteten Blütenblättern. Ganzjährig verfügbar.',price:'4–5€/Stiel',avail:'Ganzjährig',img:'1582794543139-8ac9cb0f7b11'},
+    {name:'Ranunculus',why:'Hauchdünne, geschichtete Blütenblätter imitieren den Pfingstrosen-Look zu einem Bruchteil der Kosten.',price:'3–4€/Stiel',avail:'Jan–Mai',img:'1490750967868-88aa4f44baee'},
+    {name:'Carnation (gerüscht)',why:'Moderne, gerüschte Nelken sehen überraschend wie kleine Pfingstrosen aus.',price:'1–2€/Stiel',avail:'Ganzjährig',img:'1578534102052-70f4c14ee0e7'}
   ]},
-  'Orchid':{img:'1599463740831-a5015ef7b65a',price:'$8–12/stem',season:'Year-round',subs:[
-    {name:'Lisianthus',why:'Delicate, ruffled petals similar to orchid elegance at half the price.',price:'$3–4/stem',avail:'Year-round',img:'1519378058457-4c29a0a2efac'},
-    {name:'Sweet Pea',why:'Same graceful, butterfly-like form with added fragrance.',price:'$1–2/stem',avail:'Mar–Jun',img:'1505990482843-ba05d52c02c7'},
-    {name:'Freesia',why:'Arching stems with multiple blooms echo orchid sprays.',price:'$2–3/stem',avail:'Year-round',img:'1532774994231-7c01a28457b6'}
+  'Orchidee':{img:'1599463740831-a5015ef7b65a',price:'8–12€/Stiel',season:'Ganzjährig',subs:[
+    {name:'Lisianthus',why:'Zarte, gerüschte Blütenblätter ähnlich der Orchideen-Eleganz zum halben Preis.',price:'3–4€/Stiel',avail:'Ganzjährig',img:'1519378058457-4c29a0a2efac'},
+    {name:'Sweet Pea',why:'Gleiche anmutige, schmetterlingsartige Form mit zusätzlichem Duft.',price:'1–2€/Stiel',avail:'Mär–Jun',img:'1505990482843-ba05d52c02c7'},
+    {name:'Freesia',why:'Gebogene Stiele mit mehreren Blüten erinnern an Orchideenrispen.',price:'2–3€/Stiel',avail:'Ganzjährig',img:'1532774994231-7c01a28457b6'}
   ]},
-  'Dahlia':{img:'1601021215663-ee72b7063578',price:'$4–6/stem',season:'Jul–Oct',subs:[
-    {name:'Chrysanthemum',why:'Available year-round in similar pom-pom shapes and rich colors.',price:'$1–2/stem',avail:'Year-round',img:'1578534102052-70f4c14ee0e7'},
-    {name:'Zinnia',why:'Same bold, geometric form with vibrant jewel tones.',price:'$2–3/stem',avail:'Jun–Oct',img:'1531130513023-1b5bb7bcfb9e'},
-    {name:'Carnation (football)',why:'Large, ruffled heads mimic dinnerplate dahlias surprisingly well.',price:'$2–3/stem',avail:'Year-round',img:'1554773228756-d8e1fe6aa4a7'}
+  'Dahlie':{img:'1601021215663-ee72b7063578',price:'4–6€/Stiel',season:'Jul–Okt',subs:[
+    {name:'Chrysanthemum',why:'Ganzjährig verfügbar in ähnlichen Pompon-Formen und satten Farben.',price:'1–2€/Stiel',avail:'Ganzjährig',img:'1578534102052-70f4c14ee0e7'},
+    {name:'Zinnia',why:'Gleiche kühne, geometrische Form mit leuchtenden Juwelentönen.',price:'2–3€/Stiel',avail:'Jun–Okt',img:'1531130513023-1b5bb7bcfb9e'},
+    {name:'Carnation (Fußball)',why:'Große, gerüschte Köpfe imitieren Teller-Dahlien überraschend gut.',price:'2–3€/Stiel',avail:'Ganzjährig',img:'1554773228756-d8e1fe6aa4a7'}
   ]},
-  'Hydrangea':{img:'1623201530307-c1d678f68459',price:'$5–7/stem',season:'Jun–Oct',subs:[
-    {name:'Carnation (grouped)',why:'Cluster 5-6 together and they look like one hydrangea head.',price:'$1–2/stem',avail:'Year-round',img:'1578534102052-70f4c14ee0e7'},
-    {name:'Queen Anne\'s Lace',why:'Similar clustered form with a wilder, more organic texture.',price:'$1–2/stem',avail:'May–Aug',img:'1532774994231-7c01a28457b6'},
-    {name:'Stock',why:'Dense flower clusters provide similar volume and come in matching colors.',price:'$3–4/stem',avail:'Year-round',img:'1519378058457-4c29a0a2efac'}
+  'Hortensie':{img:'1623201530307-c1d678f68459',price:'5–7€/Stiel',season:'Jun–Okt',subs:[
+    {name:'Carnation (gruppiert)',why:'5-6 zusammenstecken und sie sehen aus wie ein Hortensienkopf.',price:'1–2€/Stiel',avail:'Ganzjährig',img:'1578534102052-70f4c14ee0e7'},
+    {name:'Wilde Möhre',why:'Ähnliche gebündelte Form mit einer wilderen, organischeren Textur.',price:'1–2€/Stiel',avail:'Mai–Aug',img:'1532774994231-7c01a28457b6'},
+    {name:'Levkoje',why:'Dichte Blütentrauben bieten ähnliches Volumen in passenden Farben.',price:'3–4€/Stiel',avail:'Ganzjährig',img:'1519378058457-4c29a0a2efac'}
   ]},
-  'Garden Rose':{img:'1582794543139-8ac9cb0f7b11',price:'$4–6/stem',season:'May–Oct',subs:[
-    {name:'Standard Rose',why:'Same basic form, slightly less lush but available everywhere year-round.',price:'$2–4/stem',avail:'Year-round',img:'1530906622963-8a60586a49c7'},
-    {name:'Lisianthus',why:'Ruffled petals mimic a partially opened garden rose.',price:'$3–4/stem',avail:'Year-round',img:'1519378058457-4c29a0a2efac'},
-    {name:'Ranunculus',why:'Layered petals give a similar romantic, vintage feel.',price:'$3–4/stem',avail:'Jan–May',img:'1490750967868-88aa4f44baee'}
+  'Gartenrose':{img:'1582794543139-8ac9cb0f7b11',price:'4–6€/Stiel',season:'Mai–Okt',subs:[
+    {name:'Standard-Rose',why:'Gleiche Grundform, etwas weniger üppig, aber überall ganzjährig verfügbar.',price:'2–4€/Stiel',avail:'Ganzjährig',img:'1530906622963-8a60586a49c7'},
+    {name:'Lisianthus',why:'Gerüschte Blütenblätter imitieren eine halb geöffnete Gartenrose.',price:'3–4€/Stiel',avail:'Ganzjährig',img:'1519378058457-4c29a0a2efac'},
+    {name:'Ranunculus',why:'Geschichtete Blütenblätter verleihen ein ähnlich romantisches Vintage-Gefühl.',price:'3–4€/Stiel',avail:'Jan–Mai',img:'1490750967868-88aa4f44baee'}
   ]},
-  'Tulip':{img:'1559150180-2467f804f9bf',price:'$2–4/stem',season:'Feb–May',subs:[
-    {name:'Ranunculus',why:'Both spring flowers with clean, elegant forms.',price:'$3–4/stem',avail:'Jan–May',img:'1490750967868-88aa4f44baee'},
-    {name:'Calla Lily',why:'Similar sleek, sculptural silhouette.',price:'$3–5/stem',avail:'Year-round',img:'1605485236949-5775b9676c78'},
-    {name:'Freesia',why:'Same spring feel with added fragrance.',price:'$2–3/stem',avail:'Year-round',img:'1532774994231-7c01a28457b6'}
+  'Tulpe':{img:'1559150180-2467f804f9bf',price:'2–4€/Stiel',season:'Feb–Mai',subs:[
+    {name:'Ranunculus',why:'Beide Frühlingsblumen mit klaren, eleganten Formen.',price:'3–4€/Stiel',avail:'Jan–Mai',img:'1490750967868-88aa4f44baee'},
+    {name:'Calla-Lilie',why:'Ähnlich schlanke, skulpturale Silhouette.',price:'3–5€/Stiel',avail:'Ganzjährig',img:'1605485236949-5775b9676c78'},
+    {name:'Freesia',why:'Gleiches Frühlingsgefühl mit zusätzlichem Duft.',price:'2–3€/Stiel',avail:'Ganzjährig',img:'1532774994231-7c01a28457b6'}
   ]},
-  'Sunflower':{img:'1588834747799-82f691b36ff6',price:'$2–3/stem',season:'Jun–Sep',subs:[
-    {name:'Gerbera Daisy',why:'Similar bold, round face in many sunset colors.',price:'$2–3/stem',avail:'Year-round',img:'1531130513023-1b5bb7bcfb9e'},
-    {name:'Yellow Dahlia',why:'Same warm golden tones with more petal layers.',price:'$4–5/stem',avail:'Jul–Oct',img:'1533907650686-70576141c030'},
-    {name:'Billy Button (Craspedia)',why:'Perfect golden spheres for a modern take on sunny yellow.',price:'$1–2/stem',avail:'Year-round',img:'1530889117621-680d8584d6b4'}
+  'Sonnenblume':{img:'1588834747799-82f691b36ff6',price:'2–3€/Stiel',season:'Jun–Sep',subs:[
+    {name:'Gerbera',why:'Ähnlich kühnes, rundes Gesicht in vielen Sonnenuntergangsfarben.',price:'2–3€/Stiel',avail:'Ganzjährig',img:'1531130513023-1b5bb7bcfb9e'},
+    {name:'Gelbe Dahlie',why:'Gleiche warme Goldtöne mit mehr Blütenblattschichten.',price:'4–5€/Stiel',avail:'Jul–Okt',img:'1533907650686-70576141c030'},
+    {name:'Trommelstöckchen (Craspedia)',why:'Perfekte goldene Kugeln für einen modernen Sonnenschein-Look.',price:'1–2€/Stiel',avail:'Ganzjährig',img:'1530889117621-680d8584d6b4'}
   ]},
-  'Lily':{img:'1605485236949-5775b9676c78',price:'$4–6/stem',season:'Year-round',subs:[
-    {name:'Alstroemeria',why:'Similar trumpet shape at a fraction of the cost. No heavy pollen.',price:'$1–2/stem',avail:'Year-round',img:'1519378058457-4c29a0a2efac'},
-    {name:'Lisianthus',why:'Elegant, ruffled blooms without the strong lily fragrance.',price:'$3–4/stem',avail:'Year-round',img:'1554773228756-d8e1fe6aa4a7'},
-    {name:'Iris',why:'Dramatic form similar to lily with less pollen and longer vase life.',price:'$2–3/stem',avail:'Feb–May',img:'1477511801984-4ad318ed9846'}
+  'Lilie':{img:'1605485236949-5775b9676c78',price:'4–6€/Stiel',season:'Ganzjährig',subs:[
+    {name:'Alstroemeria',why:'Ähnliche Trompetenform zu einem Bruchteil der Kosten. Kein starker Pollen.',price:'1–2€/Stiel',avail:'Ganzjährig',img:'1519378058457-4c29a0a2efac'},
+    {name:'Lisianthus',why:'Elegante, gerüschte Blüten ohne den starken Lilienduft.',price:'3–4€/Stiel',avail:'Ganzjährig',img:'1554773228756-d8e1fe6aa4a7'},
+    {name:'Iris',why:'Dramatische Form ähnlich der Lilie mit weniger Pollen und längerer Vasenhaltbarkeit.',price:'2–3€/Stiel',avail:'Feb–Mai',img:'1477511801984-4ad318ed9846'}
   ]},
-  'Lavender':{img:'1477511801984-4ad318ed9846',price:'$2–3/stem',season:'Jun–Aug',subs:[
-    {name:'Veronica',why:'Similar spiky purple form, available more months of the year.',price:'$2–3/stem',avail:'May–Oct',img:'1532774994231-7c01a28457b6'},
-    {name:'Statice',why:'Similar texture and color, dries beautifully for lasting arrangements.',price:'$1–2/stem',avail:'Year-round',img:'1530889117621-680d8584d6b4'},
-    {name:'Salvia',why:'Same tall, spiky purple form from the same plant family.',price:'$2/stem',avail:'May–Oct',img:'1505990482843-ba05d52c02c7'}
+  'Lavendel':{img:'1477511801984-4ad318ed9846',price:'2–3€/Stiel',season:'Jun–Aug',subs:[
+    {name:'Veronica',why:'Ähnliche stachelige lila Form, mehr Monate im Jahr verfügbar.',price:'2–3€/Stiel',avail:'Mai–Okt',img:'1532774994231-7c01a28457b6'},
+    {name:'Statice',why:'Ähnliche Textur und Farbe, trocknet wunderschön für dauerhafte Arrangements.',price:'1–2€/Stiel',avail:'Ganzjährig',img:'1530889117621-680d8584d6b4'},
+    {name:'Salvia',why:'Gleiche hohe, stachelige lila Form aus der gleichen Pflanzenfamilie.',price:'2€/Stiel',avail:'Mai–Okt',img:'1505990482843-ba05d52c02c7'}
   ]},
-  'Cherry Blossom':{img:'1556066138-cfac27159329',price:'$10–15/branch',season:'Mar–Apr',subs:[
-    {name:'Quince Branch',why:'Similar branching form with delicate blooms, blooms earlier.',price:'$6–8/branch',avail:'Jan–Mar',img:'1522748906645-95d8adfd52c7'},
-    {name:'Dogwood',why:'White or pink blooms on elegant branches.',price:'$5–8/branch',avail:'Mar–May',img:'1556066138-cfac27159329'},
-    {name:'Wax Flower',why:'Tiny blossoms on branching stems echo the cherry blossom look.',price:'$2–3/stem',avail:'Year-round',img:'1530889117621-680d8584d6b4'}
+  'Kirschblüte':{img:'1556066138-cfac27159329',price:'10–15€/Zweig',season:'Mär–Apr',subs:[
+    {name:'Quittenzweig',why:'Ähnliche verzweigte Form mit zarten Blüten, blüht früher.',price:'6–8€/Zweig',avail:'Jan–Mär',img:'1522748906645-95d8adfd52c7'},
+    {name:'Hartriegel',why:'Weiße oder rosa Blüten an eleganten Zweigen.',price:'5–8€/Zweig',avail:'Mär–Mai',img:'1556066138-cfac27159329'},
+    {name:'Wachsblume',why:'Winzige Blüten an verzweigten Stielen erinnern an Kirschblüten.',price:'2–3€/Stiel',avail:'Ganzjährig',img:'1530889117621-680d8584d6b4'}
   ]},
-  'Ranunculus':{img:'1490750967868-88aa4f44baee',price:'$3–5/stem',season:'Jan–May',subs:[
-    {name:'Spray Rose',why:'Smaller clustered blooms with similar layered petal structure.',price:'$2–3/stem',avail:'Year-round',img:'1589458456444-f7158a7e8a4f'},
-    {name:'Carnation',why:'Ruffled modern varieties look remarkably similar.',price:'$1–2/stem',avail:'Year-round',img:'1578534102052-70f4c14ee0e7'},
-    {name:'Lisianthus',why:'Ruffled, rose-like petals in similar soft colors.',price:'$3–4/stem',avail:'Year-round',img:'1519378058457-4c29a0a2efac'}
+  'Ranunkel':{img:'1490750967868-88aa4f44baee',price:'3–5€/Stiel',season:'Jan–Mai',subs:[
+    {name:'Spray-Rose',why:'Kleinere, gebündelte Blüten mit ähnlicher geschichteter Blütenblattstruktur.',price:'2–3€/Stiel',avail:'Ganzjährig',img:'1589458456444-f7158a7e8a4f'},
+    {name:'Nelke',why:'Gerüschte moderne Sorten sehen bemerkenswert ähnlich aus.',price:'1–2€/Stiel',avail:'Ganzjährig',img:'1578534102052-70f4c14ee0e7'},
+    {name:'Lisianthus',why:'Gerüschte, rosenartige Blütenblätter in ähnlich sanften Farben.',price:'3–4€/Stiel',avail:'Ganzjährig',img:'1519378058457-4c29a0a2efac'}
   ]},
-  'Sweet Pea':{img:'1505990482843-ba05d52c02c7',price:'$6/bunch',season:'Apr–Jun',subs:[
-    {name:'Lisianthus',why:'Similar ruffled, delicate petals in pastel tones.',price:'$3–4/stem',avail:'Year-round',img:'1519378058457-4c29a0a2efac'},
-    {name:'Stock',why:'Similar soft, clustered blooms with lovely fragrance.',price:'$3–4/stem',avail:'Year-round',img:'1554773228756-d8e1fe6aa4a7'},
-    {name:'Freesia',why:'Delicate, arching stems with similar airy quality and scent.',price:'$2–3/stem',avail:'Year-round',img:'1532774994231-7c01a28457b6'}
+  'Wicke':{img:'1505990482843-ba05d52c02c7',price:'6€/Bund',season:'Apr–Jun',subs:[
+    {name:'Lisianthus',why:'Ähnlich gerüschte, zarte Blütenblätter in Pastelltönen.',price:'3–4€/Stiel',avail:'Ganzjährig',img:'1519378058457-4c29a0a2efac'},
+    {name:'Levkoje',why:'Ähnlich weiche, gebündelte Blüten mit herrlichem Duft.',price:'3–4€/Stiel',avail:'Ganzjährig',img:'1554773228756-d8e1fe6aa4a7'},
+    {name:'Freesia',why:'Zarte, gebogene Stiele mit ähnlich luftiger Qualität und Duft.',price:'2–3€/Stiel',avail:'Ganzjährig',img:'1532774994231-7c01a28457b6'}
   ]}
 };
 function initSubs(){
@@ -2729,8 +2742,8 @@ function showSub(flower){
       <img src="https://images.unsplash.com/photo-${d.img}?w=200&q=80" alt="${flower}" style="width:100px;height:100px;object-fit:cover;border-radius:14px" loading="lazy">
       <div>
         <h3 style="color:var(--rose)">${flower}</h3>
-        <div style="font-size:0.82rem;color:var(--dim)">${d.price} · Peak: ${d.season}</div>
-        <div style="font-size:0.78rem;color:var(--peach);margin-top:4px">Can\'t get it? Try these alternatives →</div>
+        <div style="font-size:0.82rem;color:var(--dim)">${d.price} · Hauptsaison: ${d.season}</div>
+        <div style="font-size:0.78rem;color:var(--peach);margin-top:4px">Nicht verfügbar? Probieren Sie diese Alternativen →</div>
       </div>
     </div>
     ${d.subs.map(s=>`
@@ -2752,14 +2765,14 @@ initSubs();
 // 9. OCCASION DESIGN GALLERY
 // ========================================================================
 const occData={
-  'Hochzeit':{emoji:'💒',colors:['White','Blush','Ivory','Champagne','Sage'],avoid:['Neon','Orange (unless fall)'],styles:['Cascade bridal','Round nosegay','Loose garden','Structured modern'],priceRange:'$150–$500+ per bridal bouquet',etiquette:'Match bridesmaids to bride\'s palette but slightly simpler. Boutonnières should echo one flower from the bride\'s bouquet. Centerpieces low enough for conversation.',flowers:['Garden Rose','Peony','Ranunculus','Orchid','Sweet Pea','Eucalyptus','Stephanotis'],imgs:['1521520368710-3ab197656d60','1552222661-467bd51aa1f4','1594149596808-e3b6174968b3','1620704033114-028772aa85ae']},
-  'Trauer / Beileid':{emoji:'🕊️',colors:['White','Pale pink','Soft lavender','Cream'],avoid:['Bright red','Neon','Tropical'],styles:['Standing spray','Casket drape','Wreath','Sympathy vase'],priceRange:'$75–$300+ per arrangement',etiquette:'White is universally appropriate. Lilies are traditional but check for allergies. Include a card with a simple, sincere message. Delivery timing matters — send within 1 week.',flowers:['White Rose','Lily','White Hydrangea','Orchid','Carnation','Stock','Fern'],imgs:['1552222661-467bd51aa1f4','1605485236949-5775b9676c78','1554773228756-d8e1fe6aa4a7']},
-  'Geburtstag':{emoji:'🎂',colors:['Bright mix','Hot pink','Yellow','Coral','Purple'],avoid:['All white (can look funeral)','Very dark tones'],styles:['Hand-tied bouquet','Fun vase arrangement','Modern box arrangement'],priceRange:'$40–$150',etiquette:'Match the person\'s personality. Bold and bright for extroverts, pastels for romantics. Add a fun element like a balloon or candy. Delivery to workplace makes a big impact.',flowers:['Dahlia','Sunflower','Rose (bright)','Gerbera','Tulip','Hydrangea','Wildflower Mix'],imgs:['1601021215663-ee72b7063578','1588834747799-82f691b36ff6','1533907650686-70576141c030']},
-  'Anniversary':{emoji:'💕',colors:['Red','Blush','Burgundy','Gold accents'],avoid:['Cool blues (unless specifically their favorite)'],styles:['Dozen red roses','Lush garden vase','Luxury box arrangement'],priceRange:'$75–$250',etiquette:'Red roses for passion, pink for grace, white for devotion. Include the wedding flowers if you can learn what they were. Gold accents for milestone anniversaries (25th, 50th).',flowers:['Red Rose','Peony','Garden Rose','Orchid','Ranunculus','Jasmine'],imgs:['1494972308805-463bc619d34e','1536266694648-914d29a935f9','1511201173873-c327e63eb6c4']},
-  'Get Well':{emoji:'🌻',colors:['Cheerful yellow','Soft pink','Lavender','Peach'],avoid:['Strong fragrance (can trigger nausea)','White (looks clinical)','Very large (hospital rooms are small)'],styles:['Compact vase','Basket arrangement','Small hand-tied'],priceRange:'$35–$80',etiquette:'AVOID strongly scented flowers (lilies, hyacinth) — patients may have sensitivities. Keep it small — hospital rooms are tight. Include bright colors for cheerfulness. No live plants (infection risk in some hospitals).',flowers:['Sunflower','Daisy','Carnation','Alstroemeria','Rose (cheerful colors)','Wax Flower'],imgs:['1588834747799-82f691b36ff6','1531130513023-1b5bb7bcfb9e','1530889117621-680d8584d6b4']},
-  'Neues Baby':{emoji:'👶',colors:['Soft pink','Baby blue','Yellow','Mint green','Neutral cream'],avoid:['Strong fragrance','Thorny stems','Toxic flowers (foxglove, lily of the valley)'],styles:['Pastel basket','Stuffed animal + flowers','Gender-reveal colors','Neutral garden style'],priceRange:'$45–$120',etiquette:'Check for allergies. Avoid heavily scented flowers. Include a soft toy for extra charm. Yellow or green is perfect if gender is unknown or neutral is preferred.',flowers:['Rose (pastel)','Hydrangea','Carnation','Daisy','Baby\'s Breath','Chamomile'],imgs:['1530906622963-8a60586a49c7','1527061011665-3652c757a4d4','1532774994231-7c01a28457b6']},
-  'Valentinstag':{emoji:'❤️',colors:['Red','Deep pink','Blush + red','All red'],avoid:['Yellow (friendship, not romance)','White alone (can feel cold)'],styles:['Dozen red roses','Heart-shaped box','Lush mixed arrangement','Long-stem presentation'],priceRange:'$50–$200+',etiquette:'Red roses are THE classic but don\'t have to be cliché — mix with garden roses, ranunculus, and greenery. Order early (prices surge 50-100%). Delivery on Feb 13th avoids the rush.',flowers:['Red Rose','Red Ranunculus','Red Tulip','Spray Rose','Eucalyptus','Red Dahlia'],imgs:['1494972308805-463bc619d34e','1536266694648-914d29a935f9','1490750967868-88aa4f44baee']},
-  'Mother\'s Day':{emoji:'👩‍👧',colors:['Pink','Lavender','Blush','Peach','Soft yellow'],avoid:['Very dark/moody tones','Funeral-like arrangements'],styles:['Lush garden bouquet','Luxury vase arrangement','Basket of spring flowers','Orchid plant'],priceRange:'$45–$175',etiquette:'The second-busiest day for florists after Valentine\'s. Order 2 weeks early. Peonies are the ultimate Mother\'s Day flower (if in season). Include something personal — her favorite color or flower.',flowers:['Peony','Garden Rose','Hydrangea','Ranunculus','Lavender','Tulip','Sweet Pea'],imgs:['1511201173873-c327e63eb6c4','1560256608-43f0b6f7588e','1594149596808-e3b6174968b3']}
+  'Hochzeit':{emoji:'💒',colors:['Weiß','Zartrosa','Elfenbein','Champagner','Salbei'],avoid:['Neon','Orange (außer im Herbst)'],styles:['Kaskaden-Brautstrauß','Runder Biedermeier','Lockerer Gartenstrauß','Strukturiert modern'],priceRange:'150–500€+ pro Brautstrauß',etiquette:'Brautjungfern-Sträuße passend zur Braut, aber etwas schlichter. Boutonnières sollten eine Blume aus dem Brautstrauß aufgreifen. Tischgestecke niedrig genug für Unterhaltung.',flowers:['Garden Rose','Peony','Ranunculus','Orchid','Sweet Pea','Eucalyptus','Stephanotis'],imgs:['1521520368710-3ab197656d60','1552222661-467bd51aa1f4','1594149596808-e3b6174968b3','1620704033114-028772aa85ae']},
+  'Trauer / Beileid':{emoji:'🕊️',colors:['Weiß','Zartrosa','Sanftes Lavendel','Creme'],avoid:['Leuchtendes Rot','Neon','Tropisch'],styles:['Stehgesteck','Sargschmuck','Kranz','Trauervase'],priceRange:'75–300€+ pro Arrangement',etiquette:'Weiß ist universell angemessen. Lilien sind traditionell, aber auf Allergien prüfen. Eine Karte mit einer einfachen, aufrichtigen Nachricht beilegen. Lieferzeitpunkt wichtig — innerhalb einer Woche senden.',flowers:['White Rose','Lily','White Hydrangea','Orchid','Carnation','Stock','Fern'],imgs:['1552222661-467bd51aa1f4','1605485236949-5775b9676c78','1554773228756-d8e1fe6aa4a7']},
+  'Geburtstag':{emoji:'🎂',colors:['Bunte Mischung','Pink','Gelb','Koralle','Lila'],avoid:['Ganz weiß (kann trauerartig wirken)','Sehr dunkle Töne'],styles:['Handgebundener Strauß','Fröhliches Vasen-Arrangement','Modernes Box-Arrangement'],priceRange:'40–150€',etiquette:'Zur Persönlichkeit passend wählen. Kräftig und bunt für Extrovertierte, Pastell für Romantiker. Ein lustiges Element wie Ballon oder Süßigkeiten hinzufügen. Lieferung zum Arbeitsplatz macht großen Eindruck.',flowers:['Dahlia','Sunflower','Rose (bright)','Gerbera','Tulip','Hydrangea','Wildflower Mix'],imgs:['1601021215663-ee72b7063578','1588834747799-82f691b36ff6','1533907650686-70576141c030']},
+  'Jahrestag':{emoji:'💕',colors:['Rot','Zartrosa','Burgunder','Goldakzente'],avoid:['Kühle Blautöne (außer als Lieblingsfarbe)'],styles:['Dutzend rote Rosen','Üppige Gartenvase','Luxus-Box-Arrangement'],priceRange:'75–250€',etiquette:'Rote Rosen für Leidenschaft, Rosa für Anmut, Weiß für Hingabe. Hochzeitsblumen einbeziehen, wenn bekannt. Goldakzente für Meilenstein-Jubiläen (Silberhochzeit, Goldene Hochzeit).',flowers:['Red Rose','Peony','Garden Rose','Orchid','Ranunculus','Jasmine'],imgs:['1494972308805-463bc619d34e','1536266694648-914d29a935f9','1511201173873-c327e63eb6c4']},
+  'Gute Besserung':{emoji:'🌻',colors:['Fröhliches Gelb','Zartes Rosa','Lavendel','Pfirsich'],avoid:['Starker Duft (kann Übelkeit auslösen)','Weiß (wirkt klinisch)','Sehr groß (Krankenzimmer sind klein)'],styles:['Kompakte Vase','Korb-Arrangement','Kleiner Handstrauß'],priceRange:'35–80€',etiquette:'Stark duftende Blumen VERMEIDEN (Lilien, Hyazinthen) — Patienten können empfindlich sein. Klein halten — Krankenzimmer sind eng. Fröhliche Farben für Aufheiterung. Keine lebenden Pflanzen (Infektionsrisiko in manchen Krankenhäusern).',flowers:['Sunflower','Daisy','Carnation','Alstroemeria','Rose (cheerful colors)','Wax Flower'],imgs:['1588834747799-82f691b36ff6','1531130513023-1b5bb7bcfb9e','1530889117621-680d8584d6b4']},
+  'Neues Baby':{emoji:'👶',colors:['Zartrosa','Babyblau','Gelb','Mintgrün','Neutrales Creme'],avoid:['Starker Duft','Dornige Stiele','Giftige Blumen (Fingerhut, Maiglöckchen)'],styles:['Pastellkorb','Kuscheltier + Blumen','Geschlechtsenthüllung-Farben','Neutraler Gartenstil'],priceRange:'45–120€',etiquette:'Auf Allergien prüfen. Stark duftende Blumen vermeiden. Ein Kuscheltier für extra Charme beilegen. Gelb oder Grün perfekt, wenn das Geschlecht unbekannt ist oder neutral bevorzugt wird.',flowers:['Rose (pastel)','Hydrangea','Carnation','Daisy','Baby\'s Breath','Chamomile'],imgs:['1530906622963-8a60586a49c7','1527061011665-3652c757a4d4','1532774994231-7c01a28457b6']},
+  'Valentinstag':{emoji:'❤️',colors:['Rot','Tiefes Rosa','Zartrosa + Rot','Ganz Rot'],avoid:['Gelb (Freundschaft, nicht Romantik)','Nur Weiß (kann kühl wirken)'],styles:['Dutzend rote Rosen','Herzförmige Box','Üppiges Misch-Arrangement','Langstiel-Präsentation'],priceRange:'50–200€+',etiquette:'Rote Rosen sind DER Klassiker, aber müssen nicht klischeehaft sein — mit Gartenrosen, Ranunkeln und Grün mischen. Früh bestellen (Preise steigen 50-100%). Lieferung am 13. Feb vermeidet den Ansturm.',flowers:['Red Rose','Red Ranunculus','Red Tulip','Spray Rose','Eucalyptus','Red Dahlia'],imgs:['1494972308805-463bc619d34e','1536266694648-914d29a935f9','1490750967868-88aa4f44baee']},
+  'Muttertag':{emoji:'👩‍👧',colors:['Rosa','Lavendel','Zartrosa','Pfirsich','Sanftes Gelb'],avoid:['Sehr dunkle/düstere Töne','Trauerartige Arrangements'],styles:['Üppiger Gartenstrauß','Luxus-Vasen-Arrangement','Korb mit Frühlingsblumen','Orchideenpflanze'],priceRange:'45–175€',etiquette:'Der zweitgeschäftigste Tag für Floristen nach dem Valentinstag. 2 Wochen vorher bestellen. Pfingstrosen sind DIE Muttertagsblume (wenn Saison). Etwas Persönliches einbeziehen — ihre Lieblingsfarbe oder -blume.',flowers:['Peony','Garden Rose','Hydrangea','Ranunculus','Lavender','Tulip','Sweet Pea'],imgs:['1511201173873-c327e63eb6c4','1560256608-43f0b6f7588e','1594149596808-e3b6174968b3']}
 };
 function initOccasions(){
   const el=document.getElementById('occBtns');
@@ -2779,20 +2792,20 @@ function showOcc(occ){
       </div>
       <div class="g2" style="margin-bottom:20px">
         <div>
-          <div style="font-size:0.72rem;color:var(--dimmer);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">Colors to Use</div>
+          <div style="font-size:0.72rem;color:var(--dimmer);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">Empfohlene Farben</div>
           <div style="display:flex;gap:6px;flex-wrap:wrap">${d.colors.map(c=>`<span style="padding:4px 10px;border-radius:100px;font-size:0.75rem;background:rgba(168,213,186,0.1);color:var(--sage)">${c}</span>`).join('')}</div>
-          <div style="font-size:0.72rem;color:var(--dimmer);text-transform:uppercase;letter-spacing:1px;margin-top:12px;margin-bottom:8px">Colors to Avoid</div>
+          <div style="font-size:0.72rem;color:var(--dimmer);text-transform:uppercase;letter-spacing:1px;margin-top:12px;margin-bottom:8px">Farben vermeiden</div>
           <div style="display:flex;gap:6px;flex-wrap:wrap">${d.avoid.map(c=>`<span style="padding:4px 10px;border-radius:100px;font-size:0.75rem;background:rgba(255,107,138,0.1);color:var(--rose)">${c}</span>`).join('')}</div>
         </div>
         <div>
-          <div style="font-size:0.72rem;color:var(--dimmer);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">Arrangement Styles</div>
+          <div style="font-size:0.72rem;color:var(--dimmer);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">Arrangement-Stile</div>
           <div style="display:flex;flex-direction:column;gap:4px">${d.styles.map(s=>`<div style="font-size:0.82rem;color:var(--dim);padding:4px 10px;border-radius:6px;background:rgba(255,255,255,0.03)">• ${s}</div>`).join('')}</div>
-          <div style="font-size:0.72rem;color:var(--dimmer);text-transform:uppercase;letter-spacing:1px;margin-top:12px;margin-bottom:8px">Recommended Flowers</div>
+          <div style="font-size:0.72rem;color:var(--dimmer);text-transform:uppercase;letter-spacing:1px;margin-top:12px;margin-bottom:8px">Empfohlene Blumen</div>
           <div style="display:flex;gap:6px;flex-wrap:wrap">${d.flowers.map(f=>`<span style="padding:4px 10px;border-radius:100px;font-size:0.75rem;background:rgba(200,182,255,0.1);color:var(--lavender)">${f}</span>`).join('')}</div>
         </div>
       </div>
       <div style="padding:14px 18px;border-radius:12px;background:rgba(255,209,102,0.06);border:1px solid rgba(255,209,102,0.12);font-size:0.85rem;color:var(--dim);margin-bottom:20px">
-        <strong style="color:var(--gold)">Etiquette & Pro Tips:</strong> ${d.etiquette}
+        <strong style="color:var(--gold)">Etikette & Profitipps:</strong> ${d.etiquette}
       </div>
       <div class="photo-grid" style="grid-template-columns:repeat(auto-fill,minmax(220px,1fr))">
         ${d.imgs.map(img=>`<div style="border-radius:14px;overflow:hidden;aspect-ratio:4/3"><img src="https://images.unsplash.com/photo-${img}?w=500&q=80" alt="${occ}" style="width:100%;height:100%;object-fit:cover" loading="lazy"></div>`).join('')}
