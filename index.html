@@ -185,12 +185,54 @@ h3{font-size:1.05rem;font-weight:700;margin-bottom:6px}
 .modal{background:var(--bg2);border:1px solid var(--bdr);border-radius:24px;max-width:800px;width:100%;max-height:90vh;overflow-y:auto;position:relative}
 .modal-close{position:absolute;top:16px;right:16px;width:36px;height:36px;border-radius:10px;border:1px solid var(--bdr);background:rgba(0,0,0,0.5);color:#fff;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;z-index:10;transition:all 0.2s}
 .modal-close:hover{background:rgba(255,255,255,0.2)}
+
+/* FULLSCREEN PHOTO LIGHTBOX */
+/* alte fs-lightbox entfernt — neue lightbox-* CSS oben */
 .modal-img{width:100%;height:350px;object-fit:cover;border-radius:24px 24px 0 0}
 .modal-body{padding:32px}
 
 /* GRIDS */
 .g2{display:grid;grid-template-columns:1fr 1fr;gap:24px}
 .g3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+
+/* LIGHTBOX */
+.lightbox-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.96);z-index:5000;display:none;align-items:center;justify-content:center;cursor:zoom-out;animation:lbFadeIn 0.3s ease}
+.lightbox-overlay.open{display:flex}
+@keyframes lbFadeIn{from{opacity:0}to{opacity:1}}
+.lightbox-overlay img{max-width:94vw;max-height:92vh;object-fit:contain;border-radius:12px;box-shadow:0 30px 100px rgba(0,0,0,0.8);animation:lbZoomIn 0.35s cubic-bezier(0.16,1,0.3,1);cursor:default;user-select:none;-webkit-user-select:none}
+@keyframes lbZoomIn{from{transform:scale(0.85);opacity:0}to{transform:scale(1);opacity:1}}
+.lightbox-close{position:fixed;top:20px;right:24px;width:48px;height:48px;border-radius:50%;border:2px solid rgba(255,255,255,0.3);background:rgba(0,0,0,0.6);color:#fff;font-size:24px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:5010;transition:all 0.25s;backdrop-filter:blur(8px)}
+.lightbox-close:hover{background:rgba(255,255,255,0.15);border-color:rgba(255,255,255,0.6);transform:scale(1.1)}
+.lightbox-nav{position:fixed;top:50%;transform:translateY(-50%);width:56px;height:56px;border-radius:50%;border:2px solid rgba(255,255,255,0.2);background:rgba(0,0,0,0.5);color:#fff;font-size:28px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:5010;transition:all 0.25s;backdrop-filter:blur(8px)}
+.lightbox-nav:hover{background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.5);transform:translateY(-50%) scale(1.1)}
+.lightbox-nav.lb-prev{left:20px}
+.lightbox-nav.lb-next{right:20px}
+.lightbox-caption{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.7);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.1);padding:10px 28px;border-radius:100px;color:rgba(255,255,255,0.85);font-size:0.9rem;font-weight:500;z-index:5010;text-align:center;max-width:80vw;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lightbox-counter{position:fixed;top:24px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.6);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.08);padding:6px 18px;border-radius:100px;color:rgba(255,255,255,0.5);font-size:0.75rem;font-weight:600;z-index:5010;letter-spacing:1px}
+@media(max-width:600px){.lightbox-nav{width:42px;height:42px;font-size:20px}.lightbox-nav.lb-prev{left:8px}.lightbox-nav.lb-next{right:8px}.lightbox-close{top:12px;right:12px;width:40px;height:40px;font-size:20px}.lightbox-caption{font-size:0.78rem;padding:8px 18px;bottom:16px}}
+
+/* BENUTZERHANDBUCH */
+.manual-section{position:relative;z-index:2;padding:80px 32px 60px;max-width:1320px;margin:0 auto}
+.manual-toc{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;margin:28px 0 40px}
+.manual-toc-item{background:var(--card);border:1px solid var(--bdr);border-radius:16px;padding:20px;cursor:pointer;transition:all 0.3s;display:flex;align-items:center;gap:14px}
+.manual-toc-item:hover{transform:translateY(-4px);border-color:var(--bdr-h);box-shadow:0 20px 50px -15px rgba(0,0,0,0.4)}
+.manual-toc-icon{font-size:1.8rem;flex-shrink:0}
+.manual-toc-item h4{font-size:0.95rem;font-weight:700;margin-bottom:2px}
+.manual-toc-item p{font-size:0.75rem;color:var(--dim)}
+.manual-chapter{background:var(--card);border:1px solid var(--bdr);border-radius:20px;padding:36px;margin-bottom:24px;backdrop-filter:blur(12px)}
+.manual-chapter h3{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:12px}
+.manual-chapter h4{font-size:1rem;font-weight:700;color:var(--lavender);margin:20px 0 8px}
+.manual-chapter p,.manual-chapter li{font-size:0.9rem;color:rgba(255,255,255,0.7);line-height:1.8}
+.manual-chapter ul,.manual-chapter ol{padding-left:20px;margin:8px 0 16px}
+.manual-chapter li{margin-bottom:6px}
+.manual-tip{background:rgba(168,213,186,0.06);border:1px solid rgba(168,213,186,0.15);border-radius:12px;padding:16px 20px;margin:16px 0;font-size:0.85rem;color:var(--sage)}
+.manual-tip strong{color:var(--sage)}
+.manual-warning{background:rgba(255,107,138,0.06);border:1px solid rgba(255,107,138,0.15);border-radius:12px;padding:16px 20px;margin:16px 0;font-size:0.85rem;color:var(--rose)}
+.manual-warning strong{color:var(--rose)}
+.manual-step{display:flex;gap:14px;margin:12px 0}
+.manual-step-num{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--rose),var(--lavender));color:#fff;font-weight:800;font-size:0.85rem;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.manual-step-text{font-size:0.88rem;color:rgba(255,255,255,0.75);line-height:1.7;padding-top:4px}
+.manual-shortcut{display:inline-flex;align-items:center;gap:6px;padding:3px 10px;border-radius:6px;background:rgba(200,182,255,0.1);border:1px solid rgba(200,182,255,0.2);font-size:0.78rem;font-weight:600;color:var(--lavender);font-family:'Inter',sans-serif;margin:0 2px}
 
 /* FOOTER */
 .footer{text-align:center;padding:60px 32px;border-top:1px solid rgba(255,255,255,0.04);position:relative;z-index:2}
@@ -313,6 +355,11 @@ h3{font-size:1.05rem;font-weight:700;margin-bottom:6px}
     <a class="sidebar-item" href="#calendar"><span class="sb-icon">📆</span><span class="sb-label">Kalender</span></a>
     <a class="sidebar-item" href="#analytics"><span class="sb-icon">📊</span><span class="sb-label">Analysen</span></a>
     <a class="sidebar-item" href="#production"><span class="sb-icon">🏭</span><span class="sb-label">Produktion</span></a>
+  </div>
+
+  <div class="sidebar-cat">
+    <div class="sidebar-cat-label">Hilfe</div>
+    <a class="sidebar-item" href="#user-manual"><span class="sb-icon">📖</span><span class="sb-label">Benutzerhandbuch</span></a>
   </div>
 </aside>
 
@@ -1996,6 +2043,293 @@ h3{font-size:1.05rem;font-weight:700;margin-bottom:6px}
   </div>
 </section>
 
+<!-- ================= BENUTZERHANDBUCH ================= -->
+<section class="manual-section reveal" id="user-manual">
+  <span class="tag tag-lavender">📖 Benutzerhandbuch</span>
+  <h2 class="grad">Vollständiges Benutzerhandbuch</h2>
+  <p class="sub" style="margin-bottom:12px">Alles, was Sie über Floraldesign Studio Pro wissen müssen — vom ersten Klick bis zur Beherrschung jeder Funktion.</p>
+  <p style="color:var(--dimmer);font-size:0.82rem;margin-bottom:32px">Klicken Sie auf ein Kapitel, um dorthin zu springen, oder scrollen Sie durch den gesamten Leitfaden.</p>
+
+  <div class="manual-toc">
+    <div class="manual-toc-item" onclick="document.getElementById('m-overview').scrollIntoView({behavior:'smooth'})"><div class="manual-toc-icon">🌸</div><div><h4>Erste Schritte</h4><p>Was diese App ist & wie Sie beginnen</p></div></div>
+    <div class="manual-toc-item" onclick="document.getElementById('m-galleries').scrollIntoView({behavior:'smooth'})"><div class="manual-toc-icon">🖼️</div><div><h4>Fotogalerien</h4><p>12 Galerien mit 80+ Fotos</p></div></div>
+    <div class="manual-toc-item" onclick="document.getElementById('m-design-tools').scrollIntoView({behavior:'smooth'})"><div class="manual-toc-icon">🎨</div><div><h4>Design-Werkzeuge</h4><p>Straußbauer, Paarung, Farbrad & mehr</p></div></div>
+    <div class="manual-toc-item" onclick="document.getElementById('m-planning').scrollIntoView({behavior:'smooth'})"><div class="manual-toc-icon">📅</div><div><h4>Planung & Kalkulation</h4><p>Saisonführer, Budgets, Ersatzblumen</p></div></div>
+    <div class="manual-toc-item" onclick="document.getElementById('m-knowledge').scrollIntoView({behavior:'smooth'})"><div class="manual-toc-icon">📚</div><div><h4>Wissensdatenbank</h4><p>Enzyklopädie, Vasenzeit, Duft, Prinzipien</p></div></div>
+    <div class="manual-toc-item" onclick="document.getElementById('m-business').scrollIntoView({behavior:'smooth'})"><div class="manual-toc-icon">💼</div><div><h4>Geschäfts-Werkzeuge</h4><p>CRM, Angebote, Verträge, Analysen</p></div></div>
+    <div class="manual-toc-item" onclick="document.getElementById('m-lightbox').scrollIntoView({behavior:'smooth'})"><div class="manual-toc-icon">🔍</div><div><h4>Foto-Lightbox</h4><p>Vollbildansicht & Navigation</p></div></div>
+    <div class="manual-toc-item" onclick="document.getElementById('m-tips').scrollIntoView({behavior:'smooth'})"><div class="manual-toc-icon">💡</div><div><h4>Profi-Tipps & Abkürzungen</h4><p>Versteckte Funktionen & Power-User-Tricks</p></div></div>
+  </div>
+
+  <!-- KAPITEL 1: ERSTE SCHRITTE -->
+  <div class="manual-chapter" id="m-overview">
+    <h3><span style="color:var(--rose)">🌸</span> Kapitel 1 — Erste Schritte</h3>
+    <p>Willkommen bei <strong>Floraldesign Studio Pro</strong> — der umfassendsten Floraldesign-Plattform, die je entwickelt wurde. Diese App bietet Ihnen alles, wofür Premium-Software wie Curate (275€/Monat) und Details Flowers (150€/Monat) Geld verlangen — Rezepterstellung, Stielzählung, Gewinnrechner, wunderschöne Kundenangebote, ein vollständiges CRM — komplett kostenlos.</p>
+    <h4>Für wen ist das?</h4>
+    <ul>
+      <li><strong>Professionelle Floristen</strong> mit eigenem Blumenladen oder Floristikbetrieb</li>
+      <li><strong>Hochzeitsfloristen</strong>, die Brautsträuße, Tischgestecke und Zeremonie-Installationen gestalten</li>
+      <li><strong>Eventdesigner</strong> für Firmenveranstaltungen, Galas und Partys</li>
+      <li><strong>Floristik-Studenten</strong>, die Blumen, Preisgestaltung und Arrangementtechniken lernen</li>
+      <li><strong>Blumenliebhaber</strong>, die einfach schöne Blumen lieben und mehr erfahren möchten</li>
+      <li><strong>DIY-Bräute</strong>, die ihre eigenen Hochzeitsblumen mit kleinem Budget planen</li>
+    </ul>
+    <h4>Erste Schritte</h4>
+    <div class="manual-step"><div class="manual-step-num">1</div><div class="manual-step-text"><strong>Anmelden</strong> — Klicken Sie oben rechts auf „Anmelden", um Ihre Daten sitzungsübergreifend zu speichern. Verwendet sichere Google-Authentifizierung.</div></div>
+    <div class="manual-step"><div class="manual-step-num">2</div><div class="manual-step-text"><strong>Seitenleiste erkunden</strong> — Die linke Seitenleiste (klicken Sie auf ☰ oder fahren Sie am Desktop mit der Maus darüber) organisiert alles: Galerien, Design-Werkzeuge, Planung, Wissen und Geschäft.</div></div>
+    <div class="manual-step"><div class="manual-step-num">3</div><div class="manual-step-text"><strong>Galerien durchstöbern</strong> — Scrollen Sie durch die wunderschönen Fotogalerien. Klicken Sie auf ein Blumenfoto für die Vollbildansicht oder auf den Textbereich für detaillierte Infos und Preise.</div></div>
+    <div class="manual-step"><div class="manual-step-num">4</div><div class="manual-step-text"><strong>Rezept erstellen</strong> — Gehen Sie zum Rezeptplaner, fügen Sie Blumen hinzu und nutzen Sie dann den Gewinnrechner für Ihre Preisgestaltung.</div></div>
+    <div class="manual-tip"><strong>💡 Tipp:</strong> Diese App funktioniert auch offline! Es ist eine Progressive Web App (PWA) — installieren Sie sie auf Ihrem Handy oder Tablet über „Zum Startbildschirm hinzufügen" und nutzen Sie sie auf dem Blumenmarkt ohne Internet.</div>
+    <h4>Was diese App besonders macht</h4>
+    <ul>
+      <li><strong>80+ echte Blumenfotos</strong> — Jedes Bild ist ein echtes Foto von Unsplash, kein Clipart oder KI-generiert</li>
+      <li><strong>9 interaktive Werkzeuge</strong> — Straußbauer, Paarungsmaschine, Farbrad, Stilquiz, Formenexplorer, Saisongenerator, Budgetrechner, Ersatzfinder und Anlassgalerie</li>
+      <li><strong>Komplette Geschäftssuite</strong> — CRM, Angebote, Verträge, Kalender, Analysen, Produktionsplanung, Einkaufslisten</li>
+      <li><strong>Preisdaten</strong> — Echte Großhandelspreise für jede Blume zur genauen Kundenberatung</li>
+      <li><strong>Null Kosten</strong> — Kein Abonnement, keine Testphase, keine gesperrten Funktionen. Alles kostenlos, für immer.</li>
+    </ul>
+  </div>
+
+  <!-- KAPITEL 2: FOTOGALERIEN -->
+  <div class="manual-chapter" id="m-galleries">
+    <h3><span style="color:var(--gold)">🖼️</span> Kapitel 2 — Fotogalerien</h3>
+    <p>Die App enthält <strong>12 wunderschöne Fotogalerien</strong> mit über 80 echten Blumenfotos. Jede Galerie ist kuratiert, um eine bestimmte Blumenfamilie, einen Stil oder ein Thema zu präsentieren.</p>
+    <h4>Galerie-Verzeichnis</h4>
+    <ol>
+      <li><strong>🌹 Rosen</strong> — 8 Sorten von Gartenrosen bis David Austin. Preise von 3,00–8,00€/Stiel.</li>
+      <li><strong>🌸 Pfingstrosen & Dahlien</strong> — 6 Showstopper inkl. Rosa Pfingstrose, Cafe au Lait Dahlie, Ranunkel und Anemone.</li>
+      <li><strong>💐 Sträuße & Arrangements</strong> — 6 Stile: Brautstrauß, Tischgesteck, Zeremonie-Installation, Wildblumenstrauß, Tischläufer, Pastelltraum.</li>
+      <li><strong>🌷 Tulpen, Lilien & Mehr</strong> — 8 wichtige Blumen: Tulpen, Sonnenblumen, Hortensie, Orchidee, Lilie, Lavendel, Eukalyptus, Kirschblüte.</li>
+      <li><strong>🌾 Wildblumen & Cottage</strong> — Romantische Gartenblumen: Kosmeen, Wildblumenmix, Wiesensträuße.</li>
+      <li><strong>🌴 Tropisch & Exotisch</strong> — Kühne tropische Blüten: Paradiesvogelblume, Helikonie, Anthurie, Protea.</li>
+      <li><strong>🍃 Grünpflanzen & Blattwerk</strong> — Eukalyptus-Sorten, Farne, Olivenzweige, Ruskus, Silberblatt.</li>
+      <li><strong>🥀 Getrocknet & Konserviert</strong> — Getrocknete Rosen, Pampasgras, Hasenschwänzchen, Lavendelbündel.</li>
+      <li><strong>🎨 Farbpaletten</strong> — Rosé & Burgunder, Gartenparty, Moderne Neutraltöne, Sonnenuntergang, Winter-Juwelentöne.</li>
+      <li><strong>💒 Hochzeitsstile</strong> — Klassische Eleganz, Bohème-Garten, Rustikal, Modern Minimalistisch, Luxus-Anwesen.</li>
+      <li><strong>✨ Luxus-Kollektion</strong> — Premium-Arrangements: Orchideen-Kaskaden, Gartenrosen-Kompotte, opulente Installationen.</li>
+      <li><strong>🗓️ Saisonale Arrangements</strong> — Frühlings-Pastelle, Sommer-Leuchten, Herbst-Juwelen, Winter-Weiß.</li>
+    </ol>
+    <h4>Wie Fotokarten funktionieren</h4>
+    <ul>
+      <li><strong>Das Blumenfoto</strong> — Klicken für Vollbildansicht in der Lightbox</li>
+      <li><strong>Saison-Badge</strong> (oben rechts) — Wann die Blume verfügbar ist</li>
+      <li><strong>Preis-Badge</strong> (oben links) — Großhandelspreis pro Stiel oder Arrangement</li>
+      <li><strong>Blumenname & Beschreibung</strong> (unterer Textbereich) — Klicken für detaillierte Infos</li>
+    </ul>
+    <div class="manual-tip"><strong>💡 Tipp:</strong> Klicken Sie direkt auf das <strong>Bild</strong> für die Vollbildansicht in der Lightbox. Klicken Sie auf den <strong>Blumennamen-Text</strong> unten für detaillierte Infos, Preise und Saisondaten im Info-Modal.</div>
+  </div>
+
+  <!-- KAPITEL 3: DESIGN-WERKZEUGE -->
+  <div class="manual-chapter" id="m-design-tools">
+    <h3><span style="color:var(--lavender)">🎨</span> Kapitel 3 — Design-Werkzeuge</h3>
+    <p>Neun interaktive Werkzeuge zum Entwerfen, Planen und Visualisieren von Blumenarrangements.</p>
+
+    <h4>🎨 Straußbauer</h4>
+    <p>Ihre digitale Werkbank für maßgeschneiderte Arrangements. Wählen Sie Blumen, sehen Sie sie in Ihrer Komposition und erhalten Sie eine Echtzeit-Kostenkalkulation.</p>
+    <div class="manual-step"><div class="manual-step-num">1</div><div class="manual-step-text">Navigieren Sie zum Straußbauer über Seitenleiste → Design-Werkzeuge → Straußbauer</div></div>
+    <div class="manual-step"><div class="manual-step-num">2</div><div class="manual-step-text">Durchstöbern Sie die Blumenkarten — jede zeigt Foto, Name, Preis und Farbfamilie</div></div>
+    <div class="manual-step"><div class="manual-step-num">3</div><div class="manual-step-text">Klicken Sie „Hinzufügen", um eine Blume in Ihre Komposition aufzunehmen</div></div>
+    <div class="manual-step"><div class="manual-step-num">4</div><div class="manual-step-text">Ausgewählte Blumen erscheinen im Vorschaubereich mit laufender Summe</div></div>
+    <div class="manual-tip"><strong>💡 Profi-Tipp:</strong> Ein ausgewogener Strauß verwendet 3–5 Blumentypen: 1 Fokusblume (Rose, Pfingstrose), 1–2 Begleitblumen (Ranunkel, Lisianthus) und 1–2 Füllblumen/Grün (Eukalyptus, Schleierkraut).</div>
+
+    <h4>💞 Blumen-Paarungsmaschine</h4>
+    <p>Wählen Sie eine Blume und sehen Sie, welche Begleiter atemberaubende Kombinationen ergeben — mit Farbharmonie-Analyse und Saison-Kompatibilität.</p>
+
+    <h4>🎡 Farbrad-Designer</h4>
+    <p>Wählen Sie aus 5 professionellen Farbharmonie-Schemata mit echten Blumenbeispielen:</p>
+    <ul>
+      <li><strong>Komplementär</strong> — Gegenüberliegende Farben (Violett + Gelb). Kühn und dramatisch.</li>
+      <li><strong>Analog</strong> — Benachbarte Farben (Rosa + Pfirsich + Koralle). Harmonisch und beruhigend.</li>
+      <li><strong>Triadisch</strong> — Drei gleichmäßig verteilte Farben. Lebendig und ausgewogen.</li>
+      <li><strong>Gespalten-Komplementär</strong> — Eine Farbe + zwei neben ihrem Komplement. Nuanciert.</li>
+      <li><strong>Monochromatisch</strong> — Abstufungen einer Farbe (Rosé → Rose → Burgunder). Elegant.</li>
+    </ul>
+    <div class="manual-tip"><strong>💡 Profi-Tipp:</strong> Die meisten Hochzeitsfloristen wählen analoge oder monochromatische Paletten — sie fotografieren wunderschön. Triadisch eignet sich für mutige Firmenevents.</div>
+
+    <h4>❓ Stilquiz</h4>
+    <p>Beantworten Sie 5 Fragen zu Ihren Vorlieben — romantisch vs. modern, locker vs. strukturiert, gedämpft vs. leuchtend — und erhalten Sie eine personalisierte Empfehlung mit passenden Blumen, Farben und Arrangements.</p>
+
+    <h4>🏺 Formen-Explorer</h4>
+    <p>Die 6 grundlegenden Arrangement-Formen:</p>
+    <ul>
+      <li><strong>Rund</strong> — Klassische Kuppel, Rundum-Ansicht, am beliebtesten für Tischgestecke</li>
+      <li><strong>Kaskade</strong> — Herabhängend, dramatisch für Brautsträuße</li>
+      <li><strong>Halbmond</strong> — C-förmiger Bogen, elegant und künstlerisch</li>
+      <li><strong>S-Kurve (Hogarth)</strong> — Fließende S-Form, benannt nach dem Maler William Hogarth</li>
+      <li><strong>Dreieckig</strong> — Strukturierte Spitze, formell und architektonisch</li>
+      <li><strong>Asymmetrisch/Frei</strong> — Modern, organisch, der aktuelle Trend</li>
+    </ul>
+
+    <h4>🖼️ Stimmungstafel-Ersteller</h4>
+    <p>Erstellen Sie visuelle Inspirationstafeln mit Blumen, Farben und Stilen — perfekt für Kundenberatungen.</p>
+  </div>
+
+  <!-- KAPITEL 4: PLANUNG & KALKULATION -->
+  <div class="manual-chapter" id="m-planning">
+    <h3><span style="color:var(--sage)">📅</span> Kapitel 4 — Planung & Kalkulation</h3>
+    <p>Alles für die Eventplanung und genaue Preiskalkulation.</p>
+
+    <h4>📋 Rezeptplaner</h4>
+    <p>Das Herzstück der Floralkalkulation. Erstellen Sie ein vollständiges Rezept mit Echtzeit-Kostenberechnung:</p>
+    <div class="manual-step"><div class="manual-step-num">1</div><div class="manual-step-text">Verwenden Sie <strong>+</strong> und <strong>−</strong> Tasten zur Anpassung der Stielanzahl</div></div>
+    <div class="manual-step"><div class="manual-step-num">2</div><div class="manual-step-text">Sehen Sie die Kosten pro Blume sofort bei Änderung aktualisiert</div></div>
+    <div class="manual-step"><div class="manual-step-num">3</div><div class="manual-step-text">Die Kostenaufschlüsselung zeigt: Gesamtstiele, Großhandelskosten, Arbeit (30%), Material (20€), Verkaufspreis (3,5×), Nettogewinn</div></div>
+    <div class="manual-tip"><strong>💡 Profi-Tipp:</strong> Der Branchenstandard-Aufschlag beträgt 3,5× Großhandelspreis. Gehen Sie nie unter 2,5×, es sei denn für Großaufträge.</div>
+
+    <h4>🧮 Gewinnrechner</h4>
+    <p>Modellieren Sie Event-Finanzen: Anzahl der Arrangements, durchschnittliche Großhandelskosten, Aufschlag-Regler (2,0×–5,0×) und Liefergebühr. Sofortige Anzeige von Umsatz, Kosten, Gewinn und Marge.</p>
+    <div class="manual-warning"><strong>⚠️ Wichtig:</strong> Diese nutzen Branchenstandard-Verhältnisse. Berücksichtigen Sie Ihre tatsächlichen Gemeinkosten (Miete, Fahrzeug, Versicherung, Verluste) für die endgültige Preisgestaltung.</div>
+
+    <h4>📅 Saisonaler Straußgenerator</h4>
+    <p>Klicken Sie auf einen Saison-Tab (Frühling, Sommer, Herbst, Winter), um 6 saisonale Blumenempfehlungen mit Preisen zu sehen. Unverzichtbar für Hochzeitsangebote Monate im Voraus.</p>
+
+    <h4>💰 Budgetrechner</h4>
+    <p>Geben Sie das Budget Ihres Kunden und die Anzahl der Arrangements ein. Erhalten Sie den optimalen Blumenmix für maximale Schönheit im Budget.</p>
+
+    <h4>🔄 Ersatzblumen-Finder</h4>
+    <p>Wenn eine Blume nicht in der Saison oder zu teuer ist, sehen Sie 3–4 Alternativen mit Preisvergleichen und Verfügbarkeit. Der beste Freund jedes Hochzeitsfloristen.</p>
+
+    <h4>🎉 Anlass-Galerie</h4>
+    <p>8 Anlässe mit vollständigen Richtlinien: Hochzeit, Trauerfeier, Geburtstag, Jahrestag, Gute Besserung, Baby-Geburt, Valentinstag, Muttertag. Jeweils mit empfohlenen Farben, zu vermeidenden Blumen, Arrangement-Stilen, Preisbereichen und Etikette-Tipps.</p>
+    <div class="manual-tip"><strong>💡 Profi-Tipp:</strong> Speichern Sie die Anlass-Galerie als Lesezeichen für Telefonberatungen — die Etikette-Details lassen Sie wie ein absoluter Experte klingen.</div>
+
+    <h4>🛒 Einkaufsliste & Lieferantenvergleich</h4>
+    <p>Erstellen Sie Großhandelslisten aus Rezepten und vergleichen Sie Preise verschiedener Lieferanten.</p>
+  </div>
+
+  <!-- KAPITEL 5: WISSENSDATENBANK -->
+  <div class="manual-chapter" id="m-knowledge">
+    <h3><span style="color:var(--sky)">📚</span> Kapitel 5 — Wissensdatenbank</h3>
+    <p>Eine komplette Enzyklopädie des floralen Wissens.</p>
+
+    <h4>📖 Blumenpflege-Enzyklopädie</h4>
+    <p>Detaillierte Pflegeanleitungen für Dutzende Blumen: Vasenlebensdauer, Wasserbedarf, Konditionierungstechniken, Temperaturempfindlichkeit und Ethylenempfindlichkeit.</p>
+
+    <h4>⏳ Vasenlebensdauer-Tabelle</h4>
+    <ul>
+      <li><strong>Langlebig (10–14+ Tage):</strong> Chrysantheme, Nelke, Alstroemerie, Orchidee</li>
+      <li><strong>Mittel (5–8 Tage):</strong> Rose, Lilie, Hortensie, Sonnenblume, Dahlie</li>
+      <li><strong>Kurzlebig (3–5 Tage):</strong> Pfingstrose, Ranunkel, Wicke, Tulpe, Anemone</li>
+    </ul>
+    <div class="manual-tip"><strong>💡 Profi-Tipp:</strong> Für mehrtägige Events verwenden Sie langlebige Blumen als Basis und fügen kurzlebige nur am Eventtag hinzu.</div>
+
+    <h4>👃 Duft-Paarungsführer</h4>
+    <p>Gruppiert Blumen nach Duftprofil: Süß & Romantisch (Rose, Pfingstrose, Wicke), Frisch & Klar (Eukalyptus, Lavendel), Würzig & Warm (Levkoje, Tuberose), Leicht & Zitrusartig (Freesie, Zitronenblatt).</p>
+
+    <h4>📐 Gestaltungsprinzipien</h4>
+    <p>Die 7 Grundprinzipien professionellen Floraldesigns:</p>
+    <ol>
+      <li><strong>Balance</strong> — Visuelle Stabilität, symmetrisch oder asymmetrisch</li>
+      <li><strong>Proportion</strong> — Gefäß-zu-Blumen-Verhältnis (1,5×-Höhenregel)</li>
+      <li><strong>Rhythmus</strong> — Augenbewegung durch das Arrangement</li>
+      <li><strong>Kontrast</strong> — Hell vs. dunkel, groß vs. klein, glatt vs. texturiert</li>
+      <li><strong>Harmonie</strong> — Alle Elemente arbeiten zusammen</li>
+      <li><strong>Einheit</strong> — Wiederholung von Farbe, Textur oder Blumenart</li>
+      <li><strong>Blickfang</strong> — Der Star, der den Blick zuerst anzieht</li>
+    </ol>
+
+    <h4>🔥 Trendprognose 2026</h4>
+    <ol>
+      <li><strong>Getrocknet + Frisch Hybrid</strong> — Pampasgras und konserviertes Blattwerk mit frischen Blüten</li>
+      <li><strong>Sonnenuntergangs-Paletten</strong> — Terrakotta, Pfirsich, Rost, goldene Töne</li>
+      <li><strong>Nachhaltige Floristik</strong> — Regional, saisonal, schaumstoff-frei, abfallfrei</li>
+      <li><strong>Maximalistische Installationen</strong> — Boden-bis-Decke Blumenwände, hängende Gärten</li>
+      <li><strong>Monochromatisches Weiß</strong> — Ganz in Weiß mit verschiedenen Texturen und Schattierungen</li>
+      <li><strong>Essbare Blumen</strong> — Kapuzinerkresse, Veilchen und Kräuterzweige in Arrangements</li>
+    </ol>
+
+    <h4>🧵 Textur-Mischführer</h4>
+    <ul>
+      <li><strong>Fokusblumen</strong> — Groß, rund, blickfangend (Rose, Pfingstrose, Dahlie)</li>
+      <li><strong>Linienblumen</strong> — Hoch, spitz, höhengebend (Rittersporn, Löwenmaul, Rittersporn)</li>
+      <li><strong>Füllblumen</strong> — Klein, gebündelt, Lücken füllend (Schleierkraut, Wachsblume)</li>
+      <li><strong>Grün</strong> — Blattwerk für Rahmen und Textur (Eukalyptus, Farn, Ruskus)</li>
+    </ul>
+    <div class="manual-tip"><strong>💡 Profi-Tipp:</strong> Die „Dreier-Regel" — verwenden Sie ungerade Zahlen jedes Blumentyps. 3 Pfingstrosen, 5 Rosen, 7 Eukalyptus. Ungerade Zahlen wirken immer natürlicher.</div>
+  </div>
+
+  <!-- KAPITEL 6: GESCHÄFTS-WERKZEUGE -->
+  <div class="manual-chapter" id="m-business">
+    <h3><span style="color:var(--peach)">💼</span> Kapitel 6 — Geschäfts-Werkzeuge</h3>
+    <p>Führen Sie Ihr Floristikgeschäft aus einer App.</p>
+
+    <h4>👥 CRM & Kunden-Pipeline</h4>
+    <div class="manual-step"><div class="manual-step-num">1</div><div class="manual-step-text">Kundendaten eingeben: Name, E-Mail, Telefon, Eventdatum, Eventtyp, Budget, Notizen</div></div>
+    <div class="manual-step"><div class="manual-step-num">2</div><div class="manual-step-text">Kunden erscheinen als „Neuer Lead" mit ihren Eventdetails</div></div>
+    <div class="manual-step"><div class="manual-step-num">3</div><div class="manual-step-text">Verfolgen Sie durch 5 Stufen: Neuer Lead → Beratung → Angebot gesendet → Gebucht → Geliefert</div></div>
+
+    <h4>📄 Angebotsgenerator</h4>
+    <p>Erstellen Sie professionelle Kundenangebote mit Kundennamen, Eventdetails, Arrangement-Positionen und detaillierter Preisaufstellung. Wunderschönes, druckfertiges Layout in Sekunden.</p>
+    <div class="manual-tip"><strong>💡 Profi-Tipp:</strong> Senden Sie Angebote innerhalb von 24 Stunden nach der Beratung. Schnelligkeit schafft Vertrauen und sichert Aufträge.</div>
+
+    <h4>✍️ Vertragsgenerator</h4>
+    <p>Erstellen Sie Eventverträge mit Branchenstandard-Bedingungen: 50% Anzahlung, Ersatzblumen-Regelung, Stornierungsbedingungen. Kundendaten werden automatisch aus dem CRM übernommen.</p>
+
+    <h4>📆 Eventkalender</h4>
+    <p>Monatsansicht mit allen gebuchten Events. Sehen Sie auf einen Blick, welche Tage voll sind, planen Sie die Produktion, keine Doppelbuchungen mehr.</p>
+
+    <h4>📊 Analyse-Dashboard</h4>
+    <p>Verfolgen Sie Ihre Leistung: Monatliche Umsatztrends, Buchungen nach Eventtyp, saisonale Trends, durchschnittlicher Bestellwert, Kundenakquise-Quellen.</p>
+
+    <h4>🏭 Produktionsplanung</h4>
+    <p>Planen Sie die Event-Logistik: Bestellzeitplan, Verarbeitungsplan, Designtage, Lieferwege, Personaleinsatz und Aufgabenlisten.</p>
+    <div class="manual-warning"><strong>⚠️ Wichtig:</strong> Bestellen Sie Blumen 3–5 Tage vor dem Event. Viele Großhandelsblumen brauchen 24–48 Stunden zum Hydratisieren und Öffnen nach dem Versand.</div>
+  </div>
+
+  <!-- KAPITEL 7: FOTO-LIGHTBOX -->
+  <div class="manual-chapter" id="m-lightbox">
+    <h3><span style="color:var(--mint)">🔍</span> Kapitel 7 — Vollbild-Foto-Lightbox</h3>
+    <p>Jedes Blumenfoto kann in wunderschöner Vollbildansicht betrachtet werden — perfekt zum Bewundern von Details, zum Zeigen bei Kundenberatungen oder als Inspiration.</p>
+    <h4>So verwenden Sie es</h4>
+    <div class="manual-step"><div class="manual-step-num">1</div><div class="manual-step-text"><strong>Klicken Sie auf ein Blumenbild</strong>, um es im Vollbild mit dunklem Hintergrund zu öffnen</div></div>
+    <div class="manual-step"><div class="manual-step-num">2</div><div class="manual-step-text"><strong>Navigieren</strong> Sie mit den <span class="manual-shortcut">←</span> <span class="manual-shortcut">→</span> Pfeil-Schaltflächen oder den Pfeiltasten</div></div>
+    <div class="manual-step"><div class="manual-step-num">3</div><div class="manual-step-text"><strong>Foto-Info</strong> — Blumenname unten, Fotozähler oben angezeigt</div></div>
+    <div class="manual-step"><div class="manual-step-num">4</div><div class="manual-step-text"><strong>Schließen</strong> — Klicken Sie <span class="manual-shortcut">×</span>, drücken Sie <span class="manual-shortcut">Escape</span> oder klicken Sie außerhalb des Bildes</div></div>
+    <h4>Tastaturkürzel</h4>
+    <ul>
+      <li><span class="manual-shortcut">←</span> Vorheriges Foto</li>
+      <li><span class="manual-shortcut">→</span> Nächstes Foto</li>
+      <li><span class="manual-shortcut">Escape</span> Lightbox schließen</li>
+    </ul>
+    <div class="manual-tip"><strong>💡 Profi-Tipp:</strong> Öffnen Sie bei Kundenberatungen die Lightbox auf einem Tablet und wischen Sie durch die Blumenfotos. Der dunkle Hintergrund lässt die Farben wunderschön leuchten.</div>
+  </div>
+
+  <!-- KAPITEL 8: PROFI-TIPPS -->
+  <div class="manual-chapter" id="m-tips">
+    <h3><span style="color:var(--gold)">💡</span> Kapitel 8 — Profi-Tipps & Abkürzungen</h3>
+
+    <h4>Navigations-Abkürzungen</h4>
+    <ul>
+      <li><strong>Seitenleiste-Hover</strong> — Am Desktop über die linke Seitenleiste fahren, um sie zu erweitern</li>
+      <li><strong>Seitenleiste-Pin</strong> — Auf Bildschirmen ab 1400px bleibt die Seitenleiste dauerhaft erweitert</li>
+      <li><strong>Zum Abschnitt scrollen</strong> — Klicken Sie ein Seitenleiste-Element für sanftes Scrollen</li>
+      <li><strong>Aktive Hervorhebung</strong> — Die Seitenleiste hebt automatisch den aktuellen Abschnitt hervor</li>
+    </ul>
+
+    <h4>Design-Arbeitsablauf</h4>
+    <ul>
+      <li><strong>Anlass-Galerie zuerst</strong> — Prüfen Sie Farbempfehlungen und Etikette vor dem Design</li>
+      <li><strong>Paarungsmaschine nutzen</strong> — Wählen Sie Ihre Hauptblume, lassen Sie sie Begleiter vorschlagen</li>
+      <li><strong>Ersatzfinder prüfen</strong> — Vor dem Angebot einer Saisonblume die Verfügbarkeit bestätigen</li>
+      <li><strong>Rezept → Gewinnrechner</strong> — Erst das Rezept erstellen, dann Großhandelskosten in den Gewinnrechner</li>
+      <li><strong>Saisongenerator</strong> — Zeigen Sie Kunden, was in ihrem Hochzeitsmonat frisch und schön ist</li>
+    </ul>
+
+    <h4>Geschäfts-Arbeitsablauf</h4>
+    <ul>
+      <li><strong>CRM zuerst</strong> — Jede Anfrage sofort erfassen, auch wenn nicht gebucht wird</li>
+      <li><strong>Angebote sichern Aufträge</strong> — Schönes, detailliertes Angebot innerhalb von 24 Stunden gewinnt Kunden</li>
+      <li><strong>Immer Verträge nutzen</strong> — Die Ersatzblumen-Klausel allein bewahrt Sie vor unliebsamen Überraschungen</li>
+    </ul>
+
+    <h4>Als Handy-App installieren (PWA)</h4>
+    <div class="manual-step"><div class="manual-step-num">1</div><div class="manual-step-text"><strong>iPhone/iPad:</strong> Safari → Teilen-Button → „Zum Home-Bildschirm" → „Hinzufügen"</div></div>
+    <div class="manual-step"><div class="manual-step-num">2</div><div class="manual-step-text"><strong>Android:</strong> Chrome → Drei-Punkte-Menü → „Zum Startbildschirm hinzufügen" oder „App installieren"</div></div>
+    <div class="manual-step"><div class="manual-step-num">3</div><div class="manual-step-text"><strong>Desktop:</strong> Chrome → Installationssymbol in der Adressleiste → „Installieren"</div></div>
+    <div class="manual-tip"><strong>💡 Tipp:</strong> Nach der Installation funktioniert die App offline — perfekt für den Blumengroßmarkt, wo das WLAN oft schlecht ist.</div>
+  </div>
+</section>
+
 <!-- FOOTER -->
 <footer class="footer">
   <p style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;margin-bottom:8px;background:linear-gradient(135deg,var(--rose),var(--lavender),var(--sage));-webkit-background-clip:text;-webkit-text-fill-color:transparent">Floraldesign Studio Pro</p>
@@ -2013,6 +2347,16 @@ h3{font-size:1.05rem;font-weight:700;margin-bottom:6px}
     <img class="modal-img" id="modalImg" src="" alt="">
     <div class="modal-body" id="modalBody"></div>
   </div>
+</div>
+
+<!-- LIGHTBOX — Vollbild-Fotoansicht -->
+<div class="lightbox-overlay" id="lightbox" onclick="closeLightbox(event)">
+  <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+  <button class="lightbox-nav lb-prev" onclick="lbNav(-1,event)">&#8249;</button>
+  <button class="lightbox-nav lb-next" onclick="lbNav(1,event)">&#8250;</button>
+  <img id="lightboxImg" src="" alt="" onclick="event.stopPropagation()">
+  <div class="lightbox-caption" id="lightboxCaption"></div>
+  <div class="lightbox-counter" id="lightboxCounter"></div>
 </div>
 
 <script>
@@ -2069,7 +2413,60 @@ function openModal(name,desc,img,price,season){
 }
 function closeModal(){document.getElementById('flowerModal').classList.remove('open')}
 document.getElementById('flowerModal').addEventListener('click',function(e){if(e.target===this)closeModal()});
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+
+// === LIGHTBOX — Vollbild-Fotoansicht mit Navigation ===
+let lbImages=[];let lbIndex=0;
+function initLightbox(){
+  lbImages=[];
+  document.querySelectorAll('.photo-card img, .masonry .m-item img, .photo-row .photo-item img').forEach(img=>{
+    const src=img.src.replace(/\?w=\d+/,'?w=1600').replace(/&q=\d+/,'&q=90');
+    const alt=img.alt||'Blume';
+    lbImages.push({src:src,alt:alt,el:img});
+    img.style.cursor='zoom-in';
+    img.addEventListener('click',function(e){
+      e.stopPropagation();
+      lbIndex=lbImages.findIndex(item=>item.el===img);
+      openLightbox();
+    });
+  });
+}
+function openLightbox(){
+  if(lbImages.length===0)return;
+  const lb=document.getElementById('lightbox');
+  const lbImg=document.getElementById('lightboxImg');
+  const cap=document.getElementById('lightboxCaption');
+  const ctr=document.getElementById('lightboxCounter');
+  lbImg.src=lbImages[lbIndex].src;
+  cap.textContent=lbImages[lbIndex].alt;
+  ctr.textContent=(lbIndex+1)+' / '+lbImages.length;
+  lb.classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeLightbox(e){
+  if(e&&e.target&&e.target.tagName==='IMG')return;
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow='';
+}
+function lbNav(dir,e){
+  if(e){e.stopPropagation();e.preventDefault();}
+  lbIndex=(lbIndex+dir+lbImages.length)%lbImages.length;
+  const lbImg=document.getElementById('lightboxImg');
+  lbImg.style.animation='none';lbImg.offsetHeight;lbImg.style.animation='lbZoomIn 0.25s cubic-bezier(0.16,1,0.3,1)';
+  lbImg.src=lbImages[lbIndex].src;
+  document.getElementById('lightboxCaption').textContent=lbImages[lbIndex].alt;
+  document.getElementById('lightboxCounter').textContent=(lbIndex+1)+' / '+lbImages.length;
+}
+document.addEventListener('keydown',function(e){
+  const lb=document.getElementById('lightbox');
+  if(lb.classList.contains('open')){
+    if(e.key==='Escape')closeLightbox();
+    if(e.key==='ArrowLeft')lbNav(-1);
+    if(e.key==='ArrowRight')lbNav(1);
+  }else{
+    if(e.key==='Escape')closeModal();
+  }
+});
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',initLightbox)}else{initLightbox()}
 
 // === RECIPE ===
 const R=[{n:'Gartenrose',p:4.5,q:5},{n:'Pfingstrose',p:6,q:7},{n:'Ranunkel',p:3,q:10},{n:'Eukalyptus',p:2,q:8},{n:'Wicke',p:1.2,q:10}];
