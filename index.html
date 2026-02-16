@@ -2438,12 +2438,17 @@ function initLightbox(){
     const src=img.src.replace(/\?w=\d+/,'?w=1600').replace(/&q=\d+/,'&q=90');
     const alt=img.alt||'Blume';
     lbImages.push({src:src,alt:alt,el:img});
-    img.style.cursor='zoom-in';
-    img.addEventListener('click',function(e){
-      e.stopPropagation();
-      lbIndex=lbImages.findIndex(item=>item.el===img);
-      openLightbox();
-    });
+    // photo-card Bilder: openModal() vom Karten-Click behandeln lassen (Info-Modal zuerst, dann Vollbild aus Modal)
+    // Masonry & Photo-Row Bilder: Lightbox direkt öffnen (kein Info-Modal für diese)
+    const inCard=img.closest('.photo-card');
+    if(!inCard){
+      img.style.cursor='zoom-in';
+      img.addEventListener('click',function(e){
+        e.stopPropagation();
+        lbIndex=lbImages.findIndex(item=>item.el===img);
+        openLightbox();
+      });
+    }
   });
 }
 function openLightbox(){
