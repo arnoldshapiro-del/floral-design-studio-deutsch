@@ -188,7 +188,9 @@ h3{font-size:1.05rem;font-weight:700;margin-bottom:6px}
 
 /* FULLSCREEN PHOTO LIGHTBOX */
 /* alte fs-lightbox entfernt — neue lightbox-* CSS oben */
-.modal-img{width:100%;height:350px;object-fit:cover;border-radius:24px 24px 0 0}
+.modal-img{width:100%;height:350px;object-fit:cover;border-radius:24px 24px 0 0;cursor:zoom-in}
+.btn-fullscreen{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:100px;font-size:13px;font-weight:600;background:linear-gradient(135deg,var(--rose),var(--lavender));color:#fff;border:none;cursor:pointer;transition:all 0.3s}
+.btn-fullscreen:hover{transform:scale(1.05);box-shadow:0 4px 20px rgba(200,160,180,0.4)}
 .modal-body{padding:32px}
 
 /* GRIDS */
@@ -2398,8 +2400,12 @@ window.addEventListener('scroll',()=>{
 });
 
 // === MODAL ===
+let _modalImgUrl='';
 function openModal(name,desc,img,price,season){
-  document.getElementById('modalImg').src=img;
+  _modalImgUrl=img;
+  const mImg=document.getElementById('modalImg');
+  mImg.src=img;
+  mImg.onclick=function(){modalToLightbox()};
   document.getElementById('modalBody').innerHTML=`
     <h2 style="font-family:'Cormorant Garamond',serif;font-size:2.2rem;margin-bottom:8px">${name}</h2>
     <div style="display:flex;gap:16px;margin-bottom:16px;flex-wrap:wrap">
@@ -2407,9 +2413,19 @@ function openModal(name,desc,img,price,season){
       <span style="padding:4px 14px;border-radius:100px;font-size:12px;font-weight:600;background:rgba(200,182,255,0.15);color:var(--lavender)">${season}</span>
     </div>
     <p style="font-size:1rem;color:rgba(255,255,255,0.75);line-height:1.8;margin-bottom:20px">${desc}</p>
-    <button class="btn btn-primary btn-sm" onclick="closeModal()">Schließen</button>
+    <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+      <button class="btn-fullscreen" onclick="modalToLightbox()">🔍 Vollbild anzeigen</button>
+      <button class="btn btn-primary btn-sm" onclick="closeModal()">Schließen</button>
+    </div>
   `;
   document.getElementById('flowerModal').classList.add('open');
+}
+function modalToLightbox(){
+  closeModal();
+  const hires=_modalImgUrl.replace(/\?w=\d+/,'?w=1600').replace(/&q=\d+/,'&q=90');
+  const idx=lbImages.findIndex(item=>item.src===hires);
+  if(idx>=0){lbIndex=idx;openLightbox()}
+  else{document.getElementById('lightboxImg').src=hires;document.getElementById('lightboxCaption').textContent='';document.getElementById('lightboxCounter').textContent='';document.getElementById('lightbox').classList.add('open');document.body.style.overflow='hidden'}
 }
 function closeModal(){document.getElementById('flowerModal').classList.remove('open')}
 document.getElementById('flowerModal').addEventListener('click',function(e){if(e.target===this)closeModal()});
